@@ -48,7 +48,7 @@ const AboutSection = () => {
     };
 
   return (
-    <section id='about' ref={sectionRef} className={`py-20 px-6 ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"} relative overflow-hidden`}>
+    <section id='A propos' ref={sectionRef} className={`py-20 px-6 ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"} relative overflow-hidden`}>
 
         {/* Background */}
         <motion.div style={{ y }} className='absolute inset-0 overflow-hidden'>

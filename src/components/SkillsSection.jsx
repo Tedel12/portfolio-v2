@@ -31,7 +31,7 @@ const SkillsSection = () => {
   };
 
   return (
-    <section className={`py-20 px-6 ${isDarkMode ? 'bg-gray-950 text-white' : 'bg-gray-50 text-gray-900'} relative overflow-hidden`} ref={sectionRef}>
+    <section id='Compétences' className={`py-20 px-6 ${isDarkMode ? 'bg-gray-950 text-white' : 'bg-gray-50 text-gray-900'} relative overflow-hidden`} ref={sectionRef}>
       {/* Background elements */}
       <motion.div style={{ y }}  className='absolute inset-0 overflow-hidden'>
         <div className={`absolute top-40 right-1/4 w-72 rounded-full blur-3xl opacity-5 ${isDarkMode ? "bg-blue-500" : 'bg-blue-400'}`} />
