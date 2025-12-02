@@ -14,6 +14,8 @@ const HeroSection = () => {
     const { scrollY } = useScroll();
     const heroY = useTransform(scrollY, [0, 500], [0, -100]);
 
+    
+
     const scrollToSection = (sectionId) => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -55,7 +57,7 @@ const HeroSection = () => {
         className={`min-h-screen transition-all duration-500 ${isDarkMode ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900" } `}
     >
       {/* Hero Section */}
-      <motion.section id='home' style={{ y: heroY }} className='min-h-screen flex items-center justify-center relative px-6 pt-10'>
+      <motion.section id='Accueil' style={{ y: heroY }} className='min-h-screen flex items-center justify-center relative px-6 pt-10'>
         <div className='absolute inset-0 overflow-hidden'>
             <motion.div animate={{ scale: [1, 1.1, 1], rotate: [0, 180, 360],}} transition={{
                 duration: 20,
@@ -119,10 +121,10 @@ const HeroSection = () => {
 
                         {/* CTA ButtOns - Mobile */}
                         <motion.div variants={itemVariants} className='flex flex-col sm:flex-row gap-4 justify-center items-center mb-4'>
-                            <motion.button whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} onClick={() => scrollToSection('work')}  className='bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full text-sm uppercase tracking-wider font-medium transition-all duration-300 cursor-pointer'>
+                            <motion.button whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} onClick={() => scrollToSection('Projets')}  className='bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full text-sm uppercase tracking-wider font-medium transition-all duration-300 cursor-pointer'>
                                 Voir mon travail
                             </motion.button>
-                            <motion.button whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} onClick={() => scrollToSection("contact")} className={`border ${isDarkMode ? "border-gray-700 hover:bg-gray-600 text-gray-300" : "border-gray-300 hover:bg-gray-400 text-gray-700" } px-8 py-3 rounded-full text-sm uppercase tracking-wider font-medium cursor-pointer`} >
+                            <motion.button whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} onClick={() => scrollToSection("Contact")} className={`border ${isDarkMode ? "border-gray-700 hover:bg-gray-600 text-gray-300" : "border-gray-300 hover:bg-gray-400 text-gray-700" } px-8 py-3 rounded-full text-sm uppercase tracking-wider font-medium cursor-pointer`} >
                                 Prendre Contact
                             </motion.button>
                         </motion.div>

@@ -77,7 +77,7 @@ const ContactSection = () => {
 
 
   return (
-    <section id="contact" ref={sectionRef} className={`py-24 px-6 ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"} relative overflow-hidden`}>
+    <section id="Contact" ref={sectionRef} className={`py-24 px-6 ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"} relative overflow-hidden`}>
         {/* Background Elements */}
         <motion.div style={{ y }} className='absolute inset-0 overflow-hidden pointer-events-none'>
             <div className={`absolute top-40 left-1/4 w-72 h-72 rounded-full blur-3xl opacity-5 ${isDarkMode ? "bg-blue-500" : "bg-blue-400"}`} />

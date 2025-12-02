@@ -25,13 +25,13 @@ const Navbar = () => {
             </motion.div>
 
             {/* Desktop navigation */}
-            <div className='hidden md:flex items-center space-x-8 cursor-pointer'>
+            <div className='hidden md:flex items-center space-x-8 '>
                 {["Accueil", "Compétences", "Projets", "A propos", "Contact"].map((item) => (
                     <motion.button
                         key={item}
                         whileHover={{ y: -2 }}
-                        onClick={() => scrollToSection(item.toLowerCase())}
-                        className={`text-sm uppercase tracking-wider transition-colors ${isDarkMode ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900 cursor-pointer"}`}
+                        onClick={() => scrollToSection(item)}
+                        className={`text-sm uppercase cursor-pointer tracking-wider transition-colors ${isDarkMode ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900"}`}
                     >
                         {item}
                     </motion.button>
