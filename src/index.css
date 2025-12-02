@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+
+@font-face {
+  font-family: "Urbanist";
+  src: url('./assets/fonts/Urbanist-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Urbanist", sans-serif;
+}
+
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body{
+    background-color: #000000;
+  }
+};
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar{
+  display: none;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
