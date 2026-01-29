@@ -77,8 +77,8 @@ const HeroSection = () => {
                         {/* Profile Image - Mobile */}
                         <motion.div variants={imageVariants} className='mb-8'>
                             <div className='w-32 h-32 mx-auto relative'>
-                            <motion.div whileHover={{ scale: 1.05 }} className={`w-full rounded-full overflow-hidden border-4 ${isDarkMode ? "border-gray-800" : "border-gray-400" } shadow-2xl `} >
-                                <img src={PROFILE_PIC} alt="Profile" className='w-full h-full  object-cover' />
+                            <motion.div whileHover={{ scale: 1.05 }} className={`w-full rounded-full overflow-hidden border-4 ${isDarkMode ? "border-gray-900" : "border-gray-100" } shadow-2xl `} >
+                                <img src={PROFILE_PIC} alt="Profile" className='w-full h-full rounded-full object-cover' />
                             </motion.div>
 
                             {/* Decorative ring */}
@@ -283,8 +283,8 @@ const HeroSection = () => {
                                 <span className={isDarkMode ? "text-gray-700" : "text-gray-400"}>|</span>
                                 <span className={isDarkMode ? "text-gray-600" : "text-gray-500"}>RESILIENCE</span>
                             </motion.div>
-                            <motion.div whileHover={{ scale: 1.05 }} className={`w-80 rounded-3xl overflow-hidden border-2 ${isDarkMode ? "border-gray-800" : "border-gray-400" } shadow-2xl `} >
-                                <img src={PROFILE_PIC} alt="Profile" className='w-80 h-80  object-cover' />
+                            <motion.div whileHover={{ scale: 1.05 }} className={`w-80  rounded-full overflow-hidden border-2 ${isDarkMode ? "border-gray-800" : "border-gray-400" } shadow-2xl `} >
+                                <img src={PROFILE_PIC} alt="Profile" className='w-80 h-80 cursor-pointer hover:scale-100 rounded-full object-cover' />
                             </motion.div>
                             {/* Decorative ring */}
                             <motion.div 

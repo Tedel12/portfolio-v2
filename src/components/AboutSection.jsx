@@ -78,7 +78,7 @@ const AboutSection = () => {
                         <h3 className='text-2xl font-semibold mb-6'>Ma mission</h3>
 
                         <p className={`text-lg leading-relaxed mb-6 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
-                            Je crois que la technologie devrai être un pont qui connecte les gens entre eux et qui résout un problème réel. Ma passion est de créer des expériences numériques qui ne sont pas seulement fonctionnelles mais aussi charmantes et accessible à tous.
+                            Je crois que la technologie devrais être un pont qui connecte les gens entre eux et qui résout un problème réel. Ma passion est de créer des expériences numériques qui ne sont pas seulement fonctionnelles mais aussi charmantes et accessible à tous.
                         </p>
 
                         <p className={`text-base leading-relaxed ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
