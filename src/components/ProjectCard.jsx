@@ -1,87 +1,123 @@
 import React from 'react'
-import { ExternalLink } from 'lucide-react'
-import { motion } from 'motion/react';
-import { FiGithub } from 'react-icons/fi';
+import { ExternalLink, Layers } from 'lucide-react'
+import { FiGithub } from 'react-icons/fi'
 
-
-const ProjectCard = ({ project, index, isDarkMode }) => {
-  const cardVariants = {
-    hidden: { y: 20, opactiy: 0 },
-    visible: { 
-      y: 0,
-      opactiy: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      },
-    },
-  };
-
-
+const ProjectCard = ({ project, isDarkMode, onSelectProject }) => {
   return (
-    <motion.div id='Projets' variants={cardVariants} whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut"}}} className=''>
-      <div className={`rounded-2xl overflow-hidden border-2 transition-all duration-500 ${isDarkMode ? "bg-gray-900/50 border-gray-800 hover:border-gray-700 hover:shadow-2xl hover:shadow-blue-500/10" : "bg-white/80 border-gray-200 hover:border-gray-300 hover:shadow-2xl hover:shadow-blue-500/10"} backdrop-blur-sm`}>
+    <div className={`rounded-2xl overflow-hidden border transition-all duration-300 flex flex-col justify-between ${
+      isDarkMode
+        ? "bg-gradient-to-b from-[#052618]/90 to-[#031910]/95 border-emerald-900/50 hover:border-emerald-500/60 shadow-lg hover:shadow-emerald-950/40"
+        : "bg-white border-slate-200 hover:border-emerald-500/60 shadow-md hover:shadow-lg"
+    }`}>
+      {/* Top section: Image & Badges */}
+      <div>
+        <div className='relative overflow-hidden group aspect-video bg-gray-950'>
+          <img
+            src={project.image}
+            alt={project.title}
+            className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
+          />
 
-        {/* Project Image */}
-        <div className='relative overflow-hidden'>
-          <img src={project.image} alt={project.title} className='w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer' />
+          {/* Category Badge */}
+          <div className='absolute top-3 right-3'>
+            <span className={`text-[11px] font-mono font-medium px-2.5 py-1 rounded-md border ${
+              isDarkMode
+                ? "bg-[#03140c]/90 text-emerald-300 border-emerald-900/60"
+                : "bg-white/95 text-slate-800 border-slate-200"
+            } backdrop-blur-sm`}>
+              {project.category}
+            </span>
+          </div>
 
-          {/* Featured Badge */}
           {project.featured && (
-            <div className='absolute top-4 left-4'>
-              <span className='bg-blue-500 text-white text-xs px-3 py-1 rounded-full font-medium'>
-                Phare
+            <div className='absolute top-3 left-3'>
+              <span className='bg-emerald-500 text-slate-950 text-[11px] font-subtitle font-bold px-2.5 py-1 rounded-md tracking-wide shadow-sm'>
+                Projet Phare
               </span>
             </div>
           )}
-
-            {/* Category Badge */}
-            <div className='absolute top-4 right-4'>
-              <span className={`text-xs px-3 py-1 rounded-full font-medium ${isDarkMode ? "bg-gray-800/80 text-gray-300" : "bg-white/80 text-gray-700"} backdrop-blur-sm`}>
-                {project.category}
-              </span>
-            </div>
-
-            {/* Hover Overlay with CTA Buttons */}
-            <motion.div initial={{ opacity: 0 }} whileHover={{ opacity: 1 }} transition={{ duration: 0.3 }} className='absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center space-x-4'>
-              <motion.a href={project.liveUrl} initial={{ opacity: 0.5 }} whileHover={{ opacity: 1, scale: 1.05 }} transition={{ duration: 0.3, delay: 0.1}} className='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 text-sm font-medium transition-colors' target="_blank">
-                <ExternalLink size={16} />
-                <span>Démo</span>
-              </motion.a>
-
-              <motion.a href={project.githubUrl} initial={{ opacity: 0.5 }} whileHover={{ opacity: 1, scale: 1.05 }} transition={{ duration: 0.3, delay: 0.2}} className={`border-2 border-white text-white hover:bg-white hover:text-gray-900 px-4 py-2 rounded-full flex items-center space-x-2 text-sm font-medium transition-all`} target="_blank">
-                <FiGithub size={16} />
-                <span>Code</span>
-              </motion.a>
-            </motion.div>
-
         </div>
-
 
         {/* Project Details */}
         <div className='p-6'>
-          <h3 className='text-xl font-medium mb-3 group-hover:text-blue-500 transition-colors cursor-pointer'>
+          <h3 className={`text-lg font-heading font-bold mb-2.5 transition-colors line-clamp-1 ${
+            isDarkMode ? "text-white hover:text-emerald-400" : "text-slate-900 hover:text-emerald-600"
+          }`}>
             {project.title}
           </h3>
 
-          <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+          <p className={`text-xs leading-relaxed mb-4 line-clamp-3 ${
+            isDarkMode ? "text-slate-300" : "text-slate-600"
+          }`}>
             {project.description}
           </p>
 
-
           {/* Tech Stack Tags */}
-          <div className='flex flex-wrap gap-2'>
-            {project.tags.map((tag, tagIndex) => (
-              <span key={tagIndex} className={`text-xs px-2 py-1 rounded-full ${isDarkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-gray-700"}`}>
+          <div className='flex flex-wrap gap-1.5 mb-2'>
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className={`text-[11px] font-mono px-2 py-0.5 rounded-md border font-medium ${
+                  isDarkMode
+                    ? "bg-[#041c12]/80 border-emerald-900/60 text-slate-300"
+                    : "bg-slate-100 border-slate-200 text-slate-700"
+                }`}
+              >
                 {tag}
               </span>
             ))}
           </div>
         </div>
-
       </div>
-    </motion.div>
-  )
-}
+
+      {/* Bottom Actions */}
+      <div className={`px-6 pb-6 pt-3 border-t flex flex-wrap items-center justify-between gap-2 ${
+        isDarkMode ? "border-emerald-950/80" : "border-slate-100"
+      }`}>
+        <button
+          onClick={() => onSelectProject(project)}
+          className={`inline-flex items-center space-x-1.5 text-xs font-subtitle font-semibold py-2 px-3 rounded-xl border transition-colors cursor-pointer ${
+            isDarkMode
+              ? "border-emerald-900/60 hover:bg-[#07321e] text-slate-200"
+              : "border-slate-200 hover:bg-slate-100 text-slate-700"
+          }`}
+        >
+          <Layers size={14} className="text-emerald-400" />
+          <span>Étude de cas</span>
+        </button>
+
+        <div className="flex items-center space-x-2">
+          {project.githubUrl && project.githubUrl !== '#' && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Code source GitHub"
+              className={`p-2 rounded-xl border transition-colors ${
+                isDarkMode
+                  ? "border-emerald-900/60 hover:bg-[#07321e] text-slate-300 hover:text-emerald-400"
+                  : "border-slate-200 hover:bg-slate-100 text-slate-700"
+              }`}
+            >
+              <FiGithub size={15} />
+            </a>
+          )}
+
+          {project.liveUrl && project.liveUrl !== '#' && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-1 px-3 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-subtitle font-bold transition-all shadow-sm"
+            >
+              <span>Démo</span>
+              <ExternalLink size={13} />
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default ProjectCard

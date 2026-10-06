@@ -1,180 +1,126 @@
-import { useRef } from 'react'
-import { motion, transform, useInView, useScroll, useTransform } from 'motion/react'
-import { containerVariants, itemVariants } from '../utils/helper'
-import { useTheme } from '../context/ThemeContext'
-import { AiFillTikTok } from 'react-icons/ai'
-import { FiFacebook, FiGithub, FiInstagram, FiLinkedin } from 'react-icons/fi'
-import { ArrowUp, Code2, Heart, Mail, SolarPanel } from 'lucide-react'
+import React, { useState } from 'react'
+import { useTheme } from '../context/useTheme'
+import { FiGithub, FiLinkedin } from 'react-icons/fi'
+import { ArrowUp, Code2, Mail, Shield, FileText, Bot, Heart } from 'lucide-react'
+import PrivacyModal from './PrivacyModal'
+import TermsModal from './TermsModal'
 
 const Footer = () => {
-    const { isDarkMode } = useTheme()
-    const footerRef = useRef(null)
-
-    const isInView = useInView(footerRef, { once: true, margin: '-50px' })
-
-    const { scrollYProgress } = useScroll()
-
-    const scrollY = useTransform(scrollYProgress, [0, 1], [0, -50]);
+    const { isDarkMode } = useTheme();
+    const [showPrivacy, setShowPrivacy] = useState(false);
+    const [showTerms, setShowTerms] = useState(false);
 
     const socialLinks = [
         {
             name: "GitHub",
             icon: FiGithub,
             url: "https://github.com/Tedel12",
-            color: "hover:text-gray-400",
         },
         {
-            name: "LikedIn",
+            name: "LinkedIn",
             icon: FiLinkedin,
             url: "https://www.linkedin.com/in/ben-ephra%C3%AFm-agbannon-948819311",
-            color: "hover:text-blue-400",
-        },
-        {
-            name: "Instagram",
-            icon: FiInstagram,
-            url: "https://www.instagram.com/declan_3.5",
-            color: "hover:text-pink-400",
         },
         {
             name: "Email",
             icon: Mail,
             url: "mailto:benagbannon@gmail.com",
-            color: "hover:text-green-400",
         },
-        {
-            name: "Facebook",
-            icon: FiFacebook,
-            url: "#",
-            color: "hover:text-blue-400",
-        },
-        {
-            name: "Tiktok",
-            icon: AiFillTikTok,
-            url: "#",
-            color: "hover:text-black",
-        },
-    ]
-
+    ];
 
     const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth"});
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-
-    // Animated gradient line component
-    const AnimatedGradientLine = () => {
     return (
-        <div className="absolute top-0 left-0 w-full h-px overflow-hidden">
-            <motion.div
-                className={`h-px bg-gradient-to-r ${
-                    isDarkMode
-                        ? "from-transparent via-blue-500 to-transparent"
-                        : "from-transparent via-blue-600 to-transparent"
-                }`}
-                initial={{ width: "0%", opacity: 0 }}
-                animate={isInView ? { width: "100%", opacity: 1 } : {}}
-                transition={{ duration: 1.5, ease: "easeInOut" }}
-            />
+        <footer className={`relative transition-colors border-t ${
+            isDarkMode ? "bg-[#020d06] text-slate-100 border-emerald-950/80" : "bg-white text-slate-900 border-slate-200"
+        } overflow-hidden`}>
+            {/* Emerald glow separator */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
 
-            <motion.div
-                className={`absolute top-0 h-px w-32 bg-gradient-to-r ${
-                    isDarkMode
-                        ? "from-blue-400 via-purple-500 to-blue-400"
-                        : "from-blue-500 via-purple-600 to-blue-500"
-                } blur-sm`}
-                animate={{ x: ["-50%", "calc(100vw + 50%)"] }}
-                transition={{
-                    x: {
-                        repeat: Infinity,
-                        repeatType: "loop",
-                        duration: 6,
-                        ease: "linear",
-                        delay: 1,
-                    },
-                }}
-            />
-        </div>
-    );
-};
+            <div className='max-w-7xl mx-auto px-4 md:px-8 py-16'>
+                <div className='flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-emerald-950/60'>
+                    {/* Brand Info */}
+                    <div className='text-center md:text-left space-y-2'>
+                        <div className='inline-flex items-center space-x-2.5 text-lg font-heading font-bold text-white'>
+                            <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                <Code2 size={20} />
+                            </div>
+                            <span>Ben Ephraïm Agbannon</span>
+                        </div>
+                        <p className="text-xs text-slate-400 max-w-md font-sans">
+                            Ingénieur Logiciel & IA. Spécialiste Full-Stack, Mobile (Flutter / React Native), Machine Learning, Embedded AI & Physical AI (ROS2).
+                        </p>
+                    </div>
 
+                    {/* Social networks & back to top */}
+                    <div className="flex flex-col sm:flex-row items-center gap-4">
+                        <div className='flex items-center space-x-2'>
+                            {socialLinks.map((social) => (
+                                <a
+                                    key={social.name}
+                                    href={social.url}
+                                    target='_blank'
+                                    rel='noopener noreferrer'
+                                    aria-label={social.name}
+                                    className="p-2.5 rounded-xl border border-emerald-900/40 bg-[#041c12] text-slate-300 hover:text-emerald-400 hover:border-emerald-500 transition-all shadow-sm"
+                                >
+                                    <social.icon size={16} />
+                                </a>
+                            ))}
+                        </div>
 
-  return (
-    <footer ref={footerRef} className={`relative ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"} overflow-hidden`}>
+                        <button
+                            onClick={scrollToTop}
+                            className="inline-flex items-center space-x-1.5 px-3.5 py-2.5 rounded-xl text-xs font-subtitle font-semibold border border-emerald-900/40 bg-[#042013] hover:bg-[#07321e] text-slate-300 transition-all cursor-pointer"
+                        >
+                            <ArrowUp size={14} />
+                            <span>Haut de page</span>
+                        </button>
+                    </div>
+                </div>
 
-        <AnimatedGradientLine />
+                {/* Bottom Legal Links & Copyright */}
+                <div className='pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400'>
+                    <div className="font-sans">
+                        © {new Date().getFullYear()} Ben Ephraïm Agbannon. Tous droits réservés.
+                    </div>
 
+                    <div className="flex items-center space-x-5 font-subtitle">
+                        <button
+                            onClick={() => setShowPrivacy(true)}
+                            className="inline-flex items-center space-x-1.5 hover:text-emerald-400 transition-colors cursor-pointer"
+                        >
+                            <Shield size={13} />
+                            <span>Politique de confidentialité</span>
+                        </button>
 
-        <motion.div style={{y: scrollY}} className='absolute inset-0 overflow-hidden pointer-events-none'>
-            <div className={`absolute bottom-10 left-1/4 w-64 h-64 rounded-full blur-3xl opacity-3 ${isDarkMode ? "bg-blue-500": "bg-blue-400"}`} />
-            <div className={`absolute top-10 right-1/4 w-48 h-48 rounded-full blur-3xl opacity-3 ${isDarkMode ? "bg-purple-500": "bg-purple-400"}`} />
-        </motion.div>
-
-        <div className='relative z-10 px-6 py-16'>
-
-            <div className='max-w-6xl mx-auto'>
-
-                {/* Main fooer content */}
-                <motion.div initial="hidden" animate={isInView ? 'visible' : "hidden"} variants={containerVariants} className='text-center space-y-8'>
-
-                    <motion.div variants={itemVariants} className='space-y-4'>
-                        <motion.div className='inline-flex items-center space-x-2 text-2xl font-medium' whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400 }}>
-                            <motion.div animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear"}} className='text-blue-500'>
-                                <Code2 size={28} /> 
-                            </motion.div>
-                            <span>AGBANNON B. Ephraïm</span>
-                        </motion.div>
-
-                        <motion.p variants={itemVariants} className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-500"} max-w-md mx-auto`}>
-                            Créer des expériences numériques avec passion, précision et une touche de magie.
-                        </motion.p>
-                    </motion.div>
-
-
-                    <motion.div variants={itemVariants} className='flex justify-center space-x-6'>
-                    
-                        {socialLinks.map((social, index) => (
-                            <motion.a key={social.name} href={social.url} target='_blank' rel='noopener noreferrer' className={`p-3 rounded-full transition-all duration-300 ${isDarkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-gray-100/50 hover:bg-gray-200/50"} ${social.color} backdrop-blur-sm`} whileHover={{ scale: 1.1, y: -2, rotate: [0, -5, 5, 0]}} whileTap={{scale: 0.95}} initial={{opacity: 0, y: 20}} animate={isInView ? { opacity: 1, y: 0} : {}} transition={{ delay: index * 0.1 + 0.5, type: "spring", stiffness: 300}}>
-                                <social.icon size={20} />
-                            </motion.a>
-                        ) )}
-
-                    </motion.div>
-
-
-                    <motion.div variants={itemVariants} className='flex items-center justify-center space-x-4'>
-                        <div className={`h-px w-16 ${isDarkMode ? "bg-gray-700" : 'bg-gray-400'}`} />
-
-                        <motion.div animate={{ scale: [1, 1.2, 1]}} transition={{ duration: 2, repeat: Infinity }} className='text-red-500'>
-                            <Heart  size={16} fill='currentColor' />
-                        </motion.div>
-
-                        <div className={`h-px w-16 ${isDarkMode ? "bg-gray-700" : 'bg-gray-500'}`} />
-
-                    </motion.div>
-
-
-                    <motion.div variants={itemVariants} className='space-x-3'>
-                        <p className={`text-sm ${isDarkMode ? "text-gray-500" : "text-gray-600"}`}>&copy; {new Date().getFullYear()} Ben likes to code. Tout droits réservés.</p>
-                        <p className={`text-sm ${isDarkMode ? "text-gray-600" : "text-gray-500"}`}>Fait avec React & Framer Motion ° Designer avec soin.</p>
-                    </motion.div>
-
-
-                    <motion.div variants={itemVariants}> 
-                        <motion.button onClick={scrollToTop} className={`inline-flex cursor-pointer items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium ${isDarkMode ? 'bg-gray-800/50 hover:bg-gray-700/50 text-gray-400 hover:text-white' : 'bg-gray-100/50 hover:bg-gray-200/50 text-gray-600 hover:text-gray-400'} backdrop-blur-sm border ${isDarkMode ? 'border-r-gray-700' : "border-gray-300"}`} whileHover={{ y: -2, scale: 1.05, boxShadow: isDarkMode ? '0 10px 25px rgba(59, 130, 246, 0.15)' : "0 10px 25px rgba(59, 130, 246, 0.1)"}} whileTap={{ scale: 0.95 }}>
-                            <ArrowUp size={16} />
-                            <span>Aller en haut</span>
-                        </motion.button>
-
-                    </motion.div>
-
-                </motion.div>
-
+                        <button
+                            onClick={() => setShowTerms(true)}
+                            className="inline-flex items-center space-x-1.5 hover:text-emerald-400 transition-colors cursor-pointer"
+                        >
+                            <FileText size={13} />
+                            <span>Conditions d'utilisation</span>
+                        </button>
+                    </div>
+                </div>
             </div>
 
-        </div>
+            {/* Legal Modals */}
+            <PrivacyModal
+                isOpen={showPrivacy}
+                onClose={() => setShowPrivacy(false)}
+                isDarkMode={isDarkMode}
+            />
 
-    </footer>
-  )
-}
+            <TermsModal
+                isOpen={showTerms}
+                onClose={() => setShowTerms(false)}
+                isDarkMode={isDarkMode}
+            />
+        </footer>
+    );
+};
 
 export default Footer

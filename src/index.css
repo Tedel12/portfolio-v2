@@ -1,41 +1,74 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sora: 'Sora', sans-serif;
+  --font-heading: 'Sora', sans-serif;
+  
+  --font-sans: 'Styrene B Office', 'Plus Jakarta Sans', sans-serif;
+  --font-narrow: 'Styrene B Office', 'Plus Jakarta Sans', sans-serif;
+  
+  --font-inter: 'Inter', sans-serif;
+  --font-subtitle: 'Inter', sans-serif;
+  
+  --font-mono: 'JetBrains Mono', monospace;
+}
 
-@font-face {
-  font-family: "Urbanist";
-  src: url('./assets/fonts/Urbanist-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+:root {
+  --font-sora: 'Sora', sans-serif;
+  --font-sans: 'Styrene B Office', 'Plus Jakarta Sans', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 body {
-  font-family: "Urbanist", sans-serif;
+  font-family: var(--font-sans);
 }
 
+h1, h2, h3, .font-heading, .font-sora {
+  font-family: var(--font-sora);
+}
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+.font-inter, .font-subtitle {
+  font-family: var(--font-inter);
+}
 
-  body{
-    background-color: #000000;
-  }
-};
-
+.font-mono {
+  font-family: var(--font-mono);
+}
 
 html {
   scroll-behavior: smooth;
 }
 
-body::-webkit-scrollbar{
-  display: none;
+/* Custom sleek emerald scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #03110a;
+}
+::-webkit-scrollbar-thumb {
+  background: #064e3b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
 }
 
-.flex-shrink-0 {
-  flex-shrink: 0;
+/* Glassmorphism helpers for dark emerald aesthetic */
+.glass-panel {
+  background: rgba(6, 30, 20, 0.65);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(16, 185, 129, 0.15);
 }
 
-.flex-grow {
-  flex-grow: 1;
+.glass-card {
+  background: rgba(5, 25, 16, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 185, 129, 0.12);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15);
 }
