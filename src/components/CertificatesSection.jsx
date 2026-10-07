@@ -45,8 +45,8 @@ const AnimatedTapPointer = () => (
         </div>
 
         {/* Action badge text - Static without pulse as requested */}
-        <div className="mt-2.5 px-3 py-1 rounded-full text-[11px] font-mono font-semibold uppercase tracking-wider bg-slate-950/90 backdrop-blur-md text-emerald-300 border border-emerald-400/30 shadow-lg">
-            <span>Appuyez pour briser la vitre</span>
+        <div className="mt-2.5 px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-wider bg-slate-950/90 backdrop-blur-md text-emerald-300 border border-emerald-400/30 shadow-lg text-center max-w-[92%]">
+            <span className="truncate block">Appuyez pour briser la vitre</span>
         </div>
     </div>
 );
@@ -213,7 +213,7 @@ const CertificatesSection = () => {
                 <div className="absolute bottom-1/4 left-1/4 w-[450px] h-[450px] rounded-full blur-[140px] opacity-10 bg-teal-500" />
             </div>
 
-            <div className="max-w-7xl mx-auto relative z-10">
+            <div className="max-w-7xl mx-auto relative z-10 w-full">
                 {/* Section Header */}
                 <div className="text-center mb-14">
                     <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-md text-xs font-subtitle font-semibold mb-3 ${
@@ -246,7 +246,7 @@ const CertificatesSection = () => {
                             <button
                                 key={cat.id}
                                 onClick={() => setActiveFilter(cat.id)}
-                                className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs md:text-sm font-subtitle font-semibold transition-all cursor-pointer ${
+                                className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-xl text-xs md:text-sm font-subtitle font-semibold transition-all cursor-pointer ${
                                     isActive
                                         ? "bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20"
                                         : isDarkMode
@@ -269,17 +269,17 @@ const CertificatesSection = () => {
                     })}
                 </div>
 
-                {/* Certificates Interactive Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 items-stretch">
+                {/* Certificates Interactive Grid - Centered & Responsive */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 items-stretch w-full">
                     {filteredCertificates.map((cert) => {
                         const isShattering = shatteringId === cert.id;
 
                         return (
                             <motion.div
                                 key={cert.id}
-                                layout
-                                whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                                className={`rounded-2xl border p-5 flex flex-col justify-between transition-all duration-300 relative group ${
+                                whileHover={{ y: -4 }}
+                                transition={{ duration: 0.2 }}
+                                className={`rounded-2xl border p-4 sm:p-5 flex flex-col justify-between w-full relative group ${
                                     isDarkMode
                                         ? "bg-gradient-to-b from-[#052818]/90 to-[#03180f]/95 border-emerald-900/40 hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-950/50"
                                         : "bg-white border-slate-200/90 hover:border-emerald-500/60 shadow-sm hover:shadow-lg"
@@ -287,11 +287,11 @@ const CertificatesSection = () => {
                             >
                                 <div>
                                     {/* Top Card Info Bar */}
-                                    <div className="flex items-center justify-between mb-3.5">
-                                        <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${cert.tagColor}`}>
+                                    <div className="flex items-center justify-between mb-3.5 gap-2">
+                                        <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded border truncate max-w-[65%] ${cert.tagColor}`}>
                                             {cert.badge}
                                         </span>
-                                        <span className="text-[11px] font-mono text-slate-400">
+                                        <span className="text-[11px] font-mono text-slate-400 shrink-0">
                                             {cert.date}
                                         </span>
                                     </div>
@@ -374,17 +374,17 @@ const CertificatesSection = () => {
                                 </div>
 
                                 {/* Bottom Card Footer */}
-                                <div className={`pt-3.5 border-t flex items-center justify-between text-xs ${
+                                <div className={`pt-3.5 border-t flex items-center justify-between text-xs gap-2 ${
                                     isDarkMode ? "border-emerald-950/80" : "border-slate-100"
                                 }`}>
-                                    <div className="flex items-center space-x-1 text-[11px] font-mono text-emerald-400">
-                                        <Check size={13} />
-                                        <span className="truncate max-w-[140px]">{cert.credentialId}</span>
+                                    <div className="flex items-center space-x-1 text-[11px] font-mono text-emerald-400 min-w-0">
+                                        <Check size={13} className="shrink-0" />
+                                        <span className="truncate">{cert.credentialId}</span>
                                     </div>
 
                                     <button
                                         onClick={(e) => handleCertificateClick(cert, e)}
-                                        className="inline-flex items-center space-x-1 text-xs font-subtitle font-bold text-emerald-500 hover:text-emerald-400 cursor-pointer"
+                                        className="inline-flex items-center space-x-1 text-xs font-subtitle font-bold text-emerald-500 hover:text-emerald-400 cursor-pointer shrink-0"
                                     >
                                         <span>Examiner</span>
                                         <ExternalLink size={12} />
