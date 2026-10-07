@@ -9,6 +9,7 @@ import ProcessSection from './components/ProcessSection'
 import ProjectsSection from './components/ProjectsSection'
 import GitHubSection from './components/GitHubSection'
 import AboutSection from './components/AboutSection'
+import CertificatesSection from './components/CertificatesSection'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
 import ServiceDetailModal from './components/ServiceDetailModal'
@@ -64,6 +65,7 @@ const MainContent = () => {
       <ProjectsSection />
       <GitHubSection />
       <AboutSection onOpenCv={() => setIsCvOpen(true)} />
+      <CertificatesSection />
       <ContactSection />
       <Footer />
 

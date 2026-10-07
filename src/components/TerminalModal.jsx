@@ -7,6 +7,7 @@ import { playRobotSound } from '../utils/robotAudio'
 const HELP_TEXT = `Commandes disponibles :
   ben --help              Affiche cette liste d'aide
   ben skills              Liste la stack technique complète
+  ben certs               Affiche les certifications officielles et hackathons
   ben projects [--filter] Liste les projets (ex: ben projects --filter ai)
   ben services            Détaille les offres et tarifs
   ben contact             Affiche les coordonnées directes de Ben
@@ -119,6 +120,19 @@ const TerminalModal = ({
 4. BeninPlantes (E-commerce réactif & design moderne)`
         });
       }
+    } else if (lower === 'ben certs' || lower === 'ben certificates') {
+      newHistory.push({
+        type: 'output',
+        text: `CERTIFICATIONS OFFICIELLES & HACKATHONS :
+1. Galactic Problem Solver — NASA International Space Apps Challenge 2025
+2. Attestation d'Excellence — Cursor Hackathon UAC 2026 (Ambassade Cursor Bénin)
+3. Understanding Artificial Intelligence — DataCamp (ID: #46,453,133)
+4. Certificat de Formation (25 000 XP) — MIABE Hackathon 2026 (15 Pays)
+5. Introduction to Data — DataCamp (ID: #47,875,099)
+Astuce: Consultez la section 'Certificats' sur la page pour briser la baie vitrée en 3D !`
+      });
+      const certSection = document.getElementById('certificats');
+      if (certSection) certSection.scrollIntoView({ behavior: 'smooth' });
     } else if (lower === 'ben services') {
       newHistory.push({
         type: 'output',

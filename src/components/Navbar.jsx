@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useTheme } from '../context/useTheme'
 import { AnimatePresence, motion } from 'motion/react'
-import { Code2, Menu, Moon, Sun, X, FileDown, Search, ArrowRight, Bot, Smartphone, Cpu, LineChart } from 'lucide-react'
+import { Code2, Menu, Moon, Sun, X, FileDown, Search, ArrowRight, Bot, Smartphone, Cpu, LineChart, Award } from 'lucide-react'
 
 const navItems = [
     { label: "Accueil", id: "accueil" },
@@ -10,12 +10,14 @@ const navItems = [
     { label: "Process", id: "process" },
     { label: "Projets", id: "projets" },
     { label: "GitHub", id: "github" },
+    { label: "Certificats", id: "certificats" },
     { label: "Contact", id: "contact" },
 ];
 
 const QUICK_SEARCH_ITEMS = [
     { title: "Physical AI & ROS2", category: "Système & Robotique", target: "competences", icon: Bot },
     { title: "Applications Mobiles (Flutter / React Native)", category: "Services", target: "services", icon: Smartphone },
+    { title: "Certifications & Prix (NASA, Cursor, DataCamp)", category: "Distinctions", target: "certificats", icon: Award },
     { title: "Machine Learning & Deep Learning", category: "Expertise IA", target: "competences", icon: Cpu },
     { title: "Visualisation de Données & BI", category: "Data Science", target: "services", icon: LineChart },
     { title: "Architecture SaaS & React 19", category: "Web Full-Stack", target: "services", icon: Code2 },

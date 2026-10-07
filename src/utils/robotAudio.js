@@ -82,3 +82,63 @@ export const playRobotSound = (type = "chirp", muted = false) => {
     }
 };
 
+// Realistic glass shatter and crack sound synthesis
+export const playGlassShatterSound = (muted = false) => {
+    if (muted) return;
+    try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+
+        const now = ctx.currentTime;
+
+        // 1. Sharp initial crack/impact (transient noise burst)
+        const bufferSize = ctx.sampleRate * 0.15; // 150ms
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const output = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+            // Decaying white noise
+            output[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.25));
+        }
+
+        const whiteNoise = ctx.createBufferSource();
+        whiteNoise.buffer = buffer;
+
+        // Highpass filter for brittle glass texture
+        const filter = ctx.createBiquadFilter();
+        filter.type = "highpass";
+        filter.frequency.setValueAtTime(2200, now);
+
+        const noiseGain = ctx.createGain();
+        noiseGain.gain.setValueAtTime(0.2, now);
+        noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+
+        whiteNoise.connect(filter);
+        filter.connect(noiseGain);
+        noiseGain.connect(ctx.destination);
+
+        whiteNoise.start(now);
+
+        // 2. Resonant high-frequency glass shards (tinkling frequencies)
+        const shardFreqs = [2800, 3600, 4400, 5600, 6800];
+        shardFreqs.forEach((freq, idx) => {
+            const shardOsc = ctx.createOscillator();
+            const shardGain = ctx.createGain();
+
+            shardOsc.type = "sine";
+            shardOsc.frequency.setValueAtTime(freq + (Math.random() * 200 - 100), now + idx * 0.015);
+
+            const duration = 0.12 + Math.random() * 0.08;
+            shardGain.gain.setValueAtTime(0.06, now + idx * 0.015);
+            shardGain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.015 + duration);
+
+            shardOsc.connect(shardGain);
+            shardGain.connect(ctx.destination);
+
+            shardOsc.start(now + idx * 0.015);
+            shardOsc.stop(now + idx * 0.015 + duration);
+        });
+    } catch {
+        // Ignore audio errors gracefully
+    }
+};
+

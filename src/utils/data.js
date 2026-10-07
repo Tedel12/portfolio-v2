@@ -60,6 +60,12 @@ import PROJECT_IMG_5 from "../assets/images/project-5.png";
 import PROJECT_IMG_6 from "../assets/images/project-6.png";
 import PROJECT_IMG_7 from "../assets/images/project-7.png";
 
+import CERT_CURSOR from "../assets/certificates/cert-cursor-hackathon.png";
+import CERT_NASA from "../assets/certificates/cert-nasa-space-apps.png";
+import CERT_DATACAMP_DATA from "../assets/certificates/cert-datacamp-data.png";
+import CERT_MIABE from "../assets/certificates/cert-miabe-hackathon.png";
+import CERT_DATACAMP_AI from "../assets/certificates/cert-datacamp-ai.png";
+
 // ==========================================
 // 1. SERVICES COMPLETS (Fidèle à la Capture 1)
 // ==========================================
@@ -673,5 +679,90 @@ export const CONTACT_INFO = [
         icon: Phone,
         label: "Téléphone direct",
         value: "+229 01 55 69 98 25"
+    },
+];
+
+// ==========================================
+// 8. MES CERTIFICATS & ATTESTATIONS D'EXCELLENCE
+// ==========================================
+export const CERTIFICATES = [
+    {
+        id: "nasa-space-apps-2025",
+        title: "Galactic Problem Solver - NASA Space Apps Challenge",
+        issuer: "NASA & Agences Spatiales Partenaires",
+        category: "Hackathon International Spacial",
+        badge: "Galactic Problem Solver",
+        date: "04 - 05 Octobre 2025",
+        credentialId: "NASA-SPACE-APPS-2025-BEN",
+        signatory: "Dr. Keith Gaddis (Program Scientist, NASA Space Apps Challenge)",
+        description: "Distinction internationale décernée par la NASA pour avoir abordé et résolu avec rigueur et créativité des défis complexes de portée terrestre et spatiale en exploitant la modélisation de données, l'IA et l'analyse géospatiale.",
+        partners: "En partenariat avec : CSA, ESA, JAXA, ISRO, ASI, CONAE, SANSA, AEB, TUA, UK Space Agency",
+        skills: ["Data Science", "Open Science", "Spatial Problem Solving", "Intelligence Artificielle", "Satellite Data"],
+        image: CERT_NASA,
+        accentColor: "from-blue-600 to-indigo-700",
+        tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/30",
+    },
+    {
+        id: "cursor-hackathon-2026",
+        title: "Cursor Hackathon UAC 2026 - Attestation de Participation",
+        issuer: "Cursor (Anysphere) • Ambassade Cursor Bénin",
+        category: "Hackathon IA & Software Engineering",
+        badge: "Participation Exceptionnelle",
+        date: "21 Mars 2026",
+        credentialId: "CURSOR-HACKATHON-UAC-2026",
+        signatory: "Régis A. R. KIKI (Ambassadeur Cursor Bénin)",
+        location: "Abomey-Calavi, Bénin",
+        description: "Reconnaissance d'une participation exceptionnelle au Cursor Hackathon UAC 2026. Atteste d'une maîtrise avancée du développement logiciel augmenté par les agents IA, le prototypage rapide et l'intégration de modèles de langage (LLMs).",
+        skills: ["Cursor IDE", "AI Agentic Workflows", "Prompt Engineering", "Full-Stack Rapid Prototyping"],
+        image: CERT_CURSOR,
+        accentColor: "from-orange-600 to-amber-700",
+        tagColor: "bg-amber-500/10 text-amber-400 border-amber-500/30",
+    },
+    {
+        id: "datacamp-ai-2026",
+        title: "Understanding Artificial Intelligence",
+        issuer: "DataCamp",
+        category: "Certification Fondamentaux IA",
+        badge: "Statement of Accomplishment",
+        date: "07 Octobre 2026",
+        credentialId: "#46,453,133",
+        duration: "2 Heures",
+        signatory: "Jonathan Cornelissen (CEO, DataCamp)",
+        description: "Certification validant les principes fondamentaux et avancés de l'Intelligence Artificielle : apprentissage automatique (Machine Learning), réseaux de neurones (Deep Learning), éthique algorithmique et automatisation intelligente.",
+        skills: ["Machine Learning", "Deep Learning", "Neural Networks", "AI Concepts & Ethics"],
+        image: CERT_DATACAMP_AI,
+        accentColor: "from-emerald-600 to-teal-700",
+        tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
+    },
+    {
+        id: "miabe-hackathon-2026",
+        title: "Certificat de Validation de Formation - MIABE Hackathon 2026",
+        issuer: "MIABE Hackathon • Plateforme FATA",
+        category: "Compétition Panafricaine (15 Pays)",
+        badge: "Validation 25 000 XP",
+        date: "27 Février 2026",
+        credentialId: "MIABE-2026-FATA-XP25000",
+        signatory: "Edem GALLEY (Commissaire Général, MIABE Hackathon)",
+        description: "Validation avec succès de la phase officielle de formation du MIABE Hackathon (édition panafricaine réunissant 15 nations) avec un score certifié de 25 000 XP. Atteste des compétences solides en algorithmic engineering et développement sous contrainte de temps.",
+        skills: ["Algorithmique Avancée", "Compétition Panafricaine", "Résolution Intensive", "Software Craftsmanship"],
+        image: CERT_MIABE,
+        accentColor: "from-purple-600 to-indigo-700",
+        tagColor: "bg-purple-500/10 text-purple-400 border-purple-500/30",
+    },
+    {
+        id: "datacamp-data-2026",
+        title: "Introduction to Data",
+        issuer: "DataCamp",
+        category: "Science & Gestion des Données",
+        badge: "Statement of Accomplishment",
+        date: "21 Mai 2026",
+        credentialId: "#47,875,099",
+        duration: "2 Heures",
+        signatory: "Jonathan Cornelissen (CEO, DataCamp)",
+        description: "Validation des concepts fondamentaux de la donnée : cycle de vie des données, architectures relationnelles vs non-relationnelles, structures de pipelines et préparation de datasets pour l'inférence statistique et IA.",
+        skills: ["Data Pipelines", "Data Literacy", "Structures Relationnelles", "Exploratory Data Analysis"],
+        image: CERT_DATACAMP_DATA,
+        accentColor: "from-teal-600 to-emerald-700",
+        tagColor: "bg-teal-500/10 text-teal-400 border-teal-500/30",
     },
 ];
