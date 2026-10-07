@@ -58,7 +58,10 @@ import PROJECT_IMG_2 from "../assets/images/project-2.webp";
 import PROJECT_IMG_3 from "../assets/images/project-3.webp";
 import PROJECT_IMG_5 from "../assets/images/project-5.png";
 import PROJECT_IMG_6 from "../assets/images/project-6.png";
-import PROJECT_IMG_7 from "../assets/images/project-7.png";
+import PROJECT_IMG_LIFAC from "../assets/images/project-lifac.png";
+import PROJECT_IMG_SMART_RESTO from "../assets/images/project-smart-resto.png";
+import PROJECT_IMG_DENTWISE from "../assets/images/project-dentwise.png";
+import PROJECT_IMG_QUICKSHOW from "../assets/images/project-quickshow.jpg";
 
 import CERT_CURSOR from "../assets/certificates/cert-cursor-hackathon.png";
 import CERT_NASA from "../assets/certificates/cert-nasa-space-apps.png";
@@ -515,6 +518,59 @@ export const PROCESS_STEPS = [
 // ==========================================
 export const PROJECTS = [
     {
+        id: "dentwise",
+        title: "Dentwise — Votre Santé Protégée par l'IA",
+        description: "Plateforme e-santé connectée (Bénin Santé) : carnet de santé numérique intelligent, prise de rendez-vous médicaux et assistant vocal conversationnel propulsé par l'IA pour le suivi préventif.",
+        problem: "Difficulté d'accès rapide aux conseils médicaux préventifs, dispersion des antécédents médicaux et lenteur de l'orientation clinique pour les patients.",
+        solution: "Écosystème e-santé interactif unifié avec tri médical assisté par IA, assistant vocal en langage naturel, carnet de santé digitalisé et coordination avec praticiens de santé.",
+        image: PROJECT_IMG_DENTWISE,
+        tags: ["React", "Intelligence Artificielle", "Assistant Vocal", "E-Santé", "Tailwind CSS"],
+        liveUrl: "https://dentw.vercel.app/",
+        githubUrl: "https://github.com/Tedel12/dentw",
+        featured: true,
+        badgeText: "⭐ Projet Coup de Cœur",
+        category: "Full-Stack",
+    },
+    {
+        id: "lifac",
+        title: "LiFAC — Light For All Center",
+        description: "Plateforme chrétienne d'impact mondial pour l'évangélisation, la diffusion de messages d'édification, l'organisation de croisades et la collecte de dons humanitaires.",
+        problem: "Offrir un canal numérique d'évangélisation universel, moderne et interactif pour fédérer les communautés chrétiennes et centraliser les initiatives spirituelles et d'aide.",
+        solution: "Application web hautement responsive, optimisée pour le streaming d'événements, la gestion des dons sécurisés et la publication d'enseignements spirituels.",
+        image: PROJECT_IMG_LIFAC,
+        tags: ["React", "TypeScript", "Tailwind CSS", "Plateforme Chrétienne"],
+        liveUrl: "https://lifac.org/",
+        githubUrl: "https://github.com/Tedel12/lifac",
+        featured: true,
+        category: "Full-Stack",
+    },
+    {
+        id: "smart-resto",
+        title: "Smart Resto — Menu Digital & Commande en Ligne",
+        description: "Solution SaaS de digitalisation pour la restauration : menu interactif par table via QR Code, prise de commandes instantanée (sur place / emporter) et gestion fluide du panier client.",
+        problem: "Réduire les temps d'attente en salle aux heures de pointe, supprimer les menus papier obsolètes et fluidifier la transmission des commandes en cuisine.",
+        solution: "Application web mobile-first réactive avec filtrage par catégorie de plats, personnalisation des commandes et calcul instantané du total.",
+        image: PROJECT_IMG_SMART_RESTO,
+        tags: ["React", "Tailwind CSS", "QR Code", "SaaS Restauration"],
+        liveUrl: "https://smart-resto-delta.vercel.app/",
+        githubUrl: "https://github.com/Tedel12/smart-resto",
+        featured: true,
+        category: "Full-Stack",
+    },
+    {
+        id: "quickshow",
+        title: "QuickShow : Découverte & Billetterie Cinéma",
+        description: "Interface web de consultation de programmations cinématographiques, détails des séances, bandes-annonces et simulation de réservation instantanée.",
+        problem: "Offrir une recherche fluide et ultra-rapide sans rechargement pour consulter les affiches et horaires de projection en temps réel.",
+        solution: "Architecture réactive consommant une API cinéma avec filtres par genre, mise en cache locale et lecteur de bandes-annonces optimisé.",
+        image: PROJECT_IMG_QUICKSHOW,
+        tags: ["React", "API REST", "Tailwind CSS", "Motion"],
+        liveUrl: "https://quick-show-client-snowy.vercel.app",
+        githubUrl: "https://github.com/Tedel12/QuickShow-client",
+        featured: true,
+        category: "Frontend",
+    },
+    {
         id: 1,
         title: "LMS : Plateforme d'apprentissage en ligne",
         description: "Application complète de gestion de cours avec modules vidéo, quiz interactifs et suivi en temps réel de la progression des apprenants.",
@@ -525,32 +581,6 @@ export const PROJECTS = [
         liveUrl: "https://lms-frontend-one-rose.vercel.app",
         githubUrl: "https://github.com/Tedel12/lms",
         featured: true,
-        category: "Full-Stack",
-    },
-    {
-        id: 2,
-        title: "QuickMovie : Découverte cinématographique",
-        description: "Interface web de consultation de programmations cinématographiques, détails des séances et simulation de réservation.",
-        problem: "Offrir une recherche fluide et rapide sans rechargement pour consulter les affiches et horaires en temps réel.",
-        solution: "Consommation d'API REST externe avec mise en cache locale, filtres dynamiques et interface réactive adaptée au mobile.",
-        image: PROJECT_IMG_1,
-        tags: ["React", "API REST", "Tailwind CSS"],
-        liveUrl: "https://quick-show-client-snowy.vercel.app",
-        githubUrl: "https://github.com/Tedel12/QuickShow-client",
-        featured: true,
-        category: "Frontend",
-    },
-    {
-        id: 3,
-        title: "TaskFlow : Gestion collaborative de projets",
-        description: "Outil de gestion de projets agile avec organisation par colonnes (Kanban), attribution de priorités et historique d'activités.",
-        problem: "Simplifier la coordination d'équipes légères sans la lourdeur d'outils d'entreprise complexes.",
-        solution: "Backend Node.js/Express avec validation stricte des données et interface React modulaire.",
-        image: PROJECT_IMG_3,
-        tags: ["React", "Node.js", "Express", "MongoDB"],
-        liveUrl: "https://github.com/Tedel12",
-        githubUrl: "https://github.com/Tedel12",
-        featured: false,
         category: "Full-Stack",
     },
     {
@@ -576,21 +606,21 @@ export const PROJECTS = [
         tags: ["React", "Tailwind CSS", "OpenAI API"],
         liveUrl: "https://agency-ai-omega-hazel.vercel.app/",
         githubUrl: "https://github.com/Tedel12/agency-ai",
-        featured: true,
+        featured: false,
         category: "Frontend",
     },
     {
-        id: 6,
-        title: "Portfolio v1 : Première itération",
-        description: "Première version personnelle présentant les projets fondateurs et la trajectoire initiale d'apprentissage.",
-        problem: "Centraliser mes premiers livrables web sous un même nom de domaine.",
-        solution: "Site statique Next.js déployé sur Vercel avec transitions fluides.",
-        image: PROJECT_IMG_7,
-        tags: ["Next.js", "Tailwind CSS", "Motion"],
-        liveUrl: "https://portfolio-liart-psi-68.vercel.app",
-        githubUrl: "https://github.com/Tedel12/portfolio",
+        id: 3,
+        title: "TaskFlow : Gestion collaborative de projets",
+        description: "Outil de gestion de projets agile avec organisation par colonnes (Kanban), attribution de priorités et historique d'activités.",
+        problem: "Simplifier la coordination d'équipes légères sans la lourdeur d'outils d'entreprise complexes.",
+        solution: "Backend Node.js/Express avec validation stricte des données et interface React modulaire.",
+        image: PROJECT_IMG_3,
+        tags: ["React", "Node.js", "Express", "MongoDB"],
+        liveUrl: "https://github.com/Tedel12",
+        githubUrl: "https://github.com/Tedel12",
         featured: false,
-        category: "Frontend",
+        category: "Full-Stack",
     },
 ];
 

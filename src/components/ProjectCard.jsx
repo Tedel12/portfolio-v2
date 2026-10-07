@@ -32,7 +32,7 @@ const ProjectCard = ({ project, isDarkMode, onSelectProject }) => {
           {project.featured && (
             <div className='absolute top-3 left-3'>
               <span className='bg-emerald-500 text-slate-950 text-[11px] font-subtitle font-bold px-2.5 py-1 rounded-md tracking-wide shadow-sm'>
-                Projet Phare
+                {project.badgeText || "Projet Phare"}
               </span>
             </div>
           )}
