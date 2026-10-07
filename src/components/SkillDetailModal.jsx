@@ -27,7 +27,7 @@ const SkillDetailModal = ({ tech, onClose }) => {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 md:p-6 overflow-y-auto">
         {/* Backdrop blur overlay */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -43,28 +43,29 @@ const SkillDetailModal = ({ tech, onClose }) => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className={`relative w-full max-w-2xl rounded-2xl border p-6 md:p-8 shadow-2xl z-10 my-8 transition-colors ${
+          className={`relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-2xl border p-4 sm:p-6 md:p-8 shadow-2xl z-10 transition-colors ${
             isDarkMode
               ? "bg-[#03180f] border-emerald-900/60 text-slate-100 shadow-emerald-950/80"
               : "bg-white border-slate-200 text-slate-900 shadow-xl"
           }`}
         >
           {/* Top Bar: Icon, Name, Category & Close Button */}
-          <div className="flex items-start justify-between pb-5 border-b border-emerald-950/60 mb-6">
-            <div className="flex items-center space-x-4">
+          <div className="flex items-start justify-between pb-4 sm:pb-5 border-b border-emerald-950/60 mb-5 sm:mb-6">
+            <div className="flex items-center space-x-3 sm:space-x-4 min-w-0 mr-2">
               {/* Raw brand icon without container or background */}
-              <div className="shrink-0 flex items-center justify-center w-12 h-12">
+              <div className="shrink-0 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12">
                 {IconComponent && (
                   <IconComponent 
-                    size={38} 
+                    size={32} 
+                    className="sm:w-[38px] sm:h-[38px]"
                     style={{ color: tech.iconColor || "#10b981" }} 
                   />
                 )}
               </div>
 
-              <div>
-                <div className="flex items-center space-x-2.5 mb-1">
-                  <h3 className={`text-2xl font-heading font-bold tracking-tight ${
+              <div className="min-w-0">
+                <div className="flex items-center space-x-2.5 mb-0.5">
+                  <h3 className={`text-lg sm:text-2xl font-heading font-bold tracking-tight truncate ${
                     isDarkMode ? "text-white" : "text-slate-900"
                   }`}>
                     {tech.name}

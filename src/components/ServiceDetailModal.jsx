@@ -9,31 +9,31 @@ const ServiceDetailModal = ({ service, onClose, onContactClick }) => {
     const ServiceIcon = service.icon;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md">
-            <div className={`relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border transition-colors shadow-2xl p-6 md:p-8 ${
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-black/75 backdrop-blur-md">
+            <div className={`relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-2xl border transition-colors shadow-2xl p-4 sm:p-6 md:p-8 ${
                 isDarkMode 
                     ? "border-emerald-800/50 bg-[#03180e] text-slate-100" 
                     : "border-slate-200 bg-white text-slate-900"
             }`}>
                 {/* Header */}
-                <div className={`flex items-start justify-between pb-4 border-b mb-6 ${
+                <div className={`flex items-start justify-between pb-3 sm:pb-4 border-b mb-5 sm:mb-6 ${
                     isDarkMode ? "border-emerald-900/50" : "border-slate-200"
                 }`}>
-                    <div className="flex items-center space-x-3.5">
-                        <div className={`p-3 rounded-xl border ${
+                    <div className="flex items-center space-x-2.5 sm:space-x-3.5 min-w-0 mr-2">
+                        <div className={`p-2 sm:p-3 rounded-xl border shrink-0 ${
                             isDarkMode 
                                 ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" 
                                 : "bg-emerald-50 text-emerald-700 border-emerald-200"
                         }`}>
-                            <ServiceIcon size={24} />
+                            <ServiceIcon size={20} className="sm:w-[24px] sm:h-[24px]" />
                         </div>
-                        <div>
-                            <span className={`text-[11px] font-mono font-semibold uppercase tracking-wider ${
+                        <div className="min-w-0">
+                            <span className={`text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-wider block truncate ${
                                 isDarkMode ? "text-emerald-400" : "text-emerald-700"
                             }`}>
                                 {service.subCategory}
                             </span>
-                            <h2 className={`text-xl md:text-2xl font-heading font-bold ${
+                            <h2 className={`text-sm sm:text-xl md:text-2xl font-heading font-bold truncate ${
                                 isDarkMode ? "text-white" : "text-slate-900"
                             }`}>
                                 {service.title}

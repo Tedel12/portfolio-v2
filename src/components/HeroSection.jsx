@@ -39,27 +39,27 @@ const HeroSection = () => {
                         className="lg:col-span-7 flex flex-col justify-center text-left"
                     >
                         {/* Status Badge */}
-                        <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 mb-6">
-                            <span className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-subtitle font-semibold border ${
+                        <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 mb-5 sm:mb-6">
+                            <span className={`flex items-center space-x-2 px-3 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-subtitle font-semibold border ${
                                 isDarkMode 
                                     ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" 
                                     : "bg-emerald-50 border-emerald-200 text-emerald-800 shadow-xs"
                             }`}>
-                                <span className={`w-2 h-2 rounded-full animate-pulse ${isDarkMode ? "bg-emerald-400" : "bg-emerald-600"}`} />
-                                <span>Disponible pour Projets & R&D (Freelance / CDI)</span>
+                                <span className={`w-2 h-2 rounded-full shrink-0 animate-pulse ${isDarkMode ? "bg-emerald-400" : "bg-emerald-600"}`} />
+                                <span className="truncate">Disponible pour Projets & R&D (Freelance / CDI)</span>
                             </span>
                         </motion.div>
 
                         {/* Heading with font-sora */}
                         <motion.h1
                             variants={itemVariants}
-                            className={`text-3xl sm:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight mb-5 leading-tight ${
+                            className={`text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight mb-4 sm:mb-5 leading-tight ${
                                 isDarkMode ? "text-white" : "text-slate-900"
                             }`}
                         >
                             Ben Ephraïm Agbannon
                             <br />
-                            <span className={`font-semibold text-2xl sm:text-3xl lg:text-4xl block mt-2 ${
+                            <span className={`font-semibold text-lg sm:text-2xl md:text-3xl lg:text-4xl block mt-1.5 sm:mt-2 ${
                                 isDarkMode ? "text-emerald-400" : "text-emerald-600"
                             }`}>
                                 Ingénieur Logiciel & IA
@@ -69,7 +69,7 @@ const HeroSection = () => {
                         {/* Subtitle */}
                         <motion.p
                             variants={itemVariants}
-                            className={`text-sm sm:text-base mb-8 leading-relaxed max-w-2xl font-sans ${
+                            className={`text-xs sm:text-base mb-6 sm:mb-8 leading-relaxed max-w-2xl font-sans ${
                                 isDarkMode ? "text-slate-300" : "text-slate-700"
                             }`}
                         >
@@ -77,8 +77,8 @@ const HeroSection = () => {
                         </motion.p>
 
                         {/* Interactive Pill-like badges for expertise */}
-                        <motion.div variants={itemVariants} className="flex flex-wrap gap-2 mb-8">
-                            <span className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-subtitle font-medium border ${
+                        <motion.div variants={itemVariants} className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
+                            <span className={`inline-flex items-center space-x-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[11px] sm:text-xs font-subtitle font-medium border ${
                                 isDarkMode 
                                     ? "bg-[#052618] border-emerald-900/60 text-emerald-300" 
                                     : "bg-white border-slate-200 text-slate-800 shadow-xs"
@@ -86,7 +86,7 @@ const HeroSection = () => {
                                 <Bot size={13} className={isDarkMode ? "text-emerald-400" : "text-emerald-600"} />
                                 <span>Physical AI & ROS2</span>
                             </span>
-                            <span className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-subtitle font-medium border ${
+                            <span className={`inline-flex items-center space-x-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[11px] sm:text-xs font-subtitle font-medium border ${
                                 isDarkMode 
                                     ? "bg-[#052618] border-emerald-900/60 text-emerald-300" 
                                     : "bg-white border-slate-200 text-slate-800 shadow-xs"
@@ -94,7 +94,7 @@ const HeroSection = () => {
                                 <Cpu size={13} className={isDarkMode ? "text-emerald-400" : "text-emerald-600"} />
                                 <span>ML, DL & TinyML</span>
                             </span>
-                            <span className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-subtitle font-medium border ${
+                            <span className={`inline-flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-subtitle font-medium border ${
                                 isDarkMode 
                                     ? "bg-[#052618] border-emerald-900/60 text-emerald-300" 
                                     : "bg-white border-slate-200 text-slate-800 shadow-xs"
@@ -102,7 +102,7 @@ const HeroSection = () => {
                                 <Smartphone size={13} className={isDarkMode ? "text-emerald-400" : "text-emerald-600"} />
                                 <span>Mobile Cross-Platform</span>
                             </span>
-                            <span className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-subtitle font-medium border ${
+                            <span className={`inline-flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-subtitle font-medium border ${
                                 isDarkMode 
                                     ? "bg-[#052618] border-emerald-900/60 text-emerald-300" 
                                     : "bg-white border-slate-200 text-slate-800 shadow-xs"
@@ -115,11 +115,11 @@ const HeroSection = () => {
                         {/* CTA Buttons */}
                         <motion.div
                             variants={itemVariants}
-                            className="flex flex-wrap items-center gap-3.5 mb-8"
+                            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3.5 mb-6 sm:mb-8"
                         >
                             <button
                                 onClick={() => scrollToSection("services")}
-                                className={`px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-subtitle font-bold text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center space-x-2 ${
+                                className={`px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-subtitle font-bold text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center space-x-2 ${
                                     isDarkMode ? "shadow-lg shadow-emerald-950/60" : "shadow-md shadow-emerald-600/20"
                                 }`}
                             >
@@ -132,7 +132,7 @@ const HeroSection = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 download="CV_Ben_Ephraim_Agbannon.pdf"
-                                className={`inline-flex items-center space-x-2 px-5 py-3 rounded-xl font-subtitle font-semibold text-xs uppercase tracking-wider border transition-all ${
+                                className={`inline-flex items-center justify-center space-x-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl font-subtitle font-semibold text-xs uppercase tracking-wider border transition-all ${
                                     isDarkMode
                                         ? "bg-[#042013] border-emerald-900/60 hover:bg-[#07321e] text-slate-200"
                                         : "bg-white border-slate-300 hover:bg-slate-100 text-slate-800 shadow-xs"
@@ -144,7 +144,7 @@ const HeroSection = () => {
 
                             <button
                                 onClick={() => scrollToSection("contact")}
-                                className={`px-5 py-3 rounded-xl font-subtitle font-medium text-xs border transition-colors cursor-pointer ${
+                                className={`px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl font-subtitle font-medium text-xs border transition-colors cursor-pointer text-center ${
                                     isDarkMode
                                         ? "border-emerald-950 hover:border-emerald-800 text-slate-400 hover:text-white"
                                         : "border-slate-300 hover:border-slate-400 text-slate-700 bg-white"
@@ -157,7 +157,7 @@ const HeroSection = () => {
                         {/* Social Links */}
                         <motion.div
                             variants={itemVariants}
-                            className="flex items-center space-x-3 text-sm"
+                            className="flex flex-wrap items-center gap-3 text-sm"
                         >
                             <span className={`text-[11px] font-mono uppercase tracking-wider ${
                                 isDarkMode ? "text-slate-400" : "text-slate-600"

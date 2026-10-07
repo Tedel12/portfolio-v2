@@ -20,24 +20,22 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-body {
-  font-family: var(--font-sans);
-}
-
-h1, h2, h3, .font-heading, .font-sora {
-  font-family: var(--font-sora);
-}
-
-.font-inter, .font-subtitle {
-  font-family: var(--font-inter);
-}
-
-.font-mono {
-  font-family: var(--font-mono);
-}
-
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+#root {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Custom sleek emerald scrollbar */

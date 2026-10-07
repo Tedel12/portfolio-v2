@@ -12,16 +12,16 @@ const CvViewerModal = ({ isOpen, onClose, isDarkMode }) => {
                     : "bg-white border-slate-200 text-slate-900"
             }`}>
                 {/* Modal Header */}
-                <div className={`flex items-center justify-between px-6 py-4 border-b shrink-0 ${
+                <div className={`flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-4 border-b shrink-0 ${
                     isDarkMode ? "border-emerald-950/80 bg-[#041c12]/80" : "border-slate-200 bg-slate-50"
                 }`}>
-                    <div>
-                        <h2 className={`text-base md:text-lg font-heading font-bold ${
+                    <div className="min-w-0 mr-2">
+                        <h2 className={`text-sm sm:text-base md:text-lg font-heading font-bold truncate ${
                             isDarkMode ? "text-white" : "text-slate-900"
                         }`}>
                             Curriculum Vitae Officiel
                         </h2>
-                        <p className={`text-xs font-mono ${
+                        <p className={`text-[10px] sm:text-xs font-mono truncate ${
                             isDarkMode ? "text-emerald-400" : "text-emerald-700 font-semibold"
                         }`}>
                             Ben Ephraïm Agbannon • Ingénieur Logiciel & IA

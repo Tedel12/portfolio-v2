@@ -48,27 +48,27 @@ const Navbar = ({ onOpenCv, onOpenTerminal, onStartPitch }) => {
 
     return (
         <>
-            <nav className={`fixed top-0 w-full z-50 px-4 md:px-8 py-3 transition-colors ${
+            <nav className={`fixed top-0 w-full z-50 px-3 sm:px-6 md:px-8 py-2.5 sm:py-3 transition-colors ${
                 isDarkMode 
                     ? "bg-[#03150d]/85 border-[#064e3b]/40 text-slate-100" 
                     : "bg-white/90 border-slate-200 text-slate-900"
             } backdrop-blur-md border-b`}>
-                <div className='max-w-7xl mx-auto flex items-center justify-between gap-4'>
+                <div className='max-w-7xl mx-auto flex items-center justify-between gap-1.5 sm:gap-4'>
                     {/* Brand */}
                     <button
                         onClick={() => scrollToSection('accueil')}
-                        className='flex items-center space-x-2.5 text-left cursor-pointer group shrink-0'
+                        className='flex items-center space-x-2 sm:space-x-2.5 text-left cursor-pointer group shrink min-w-0'
                     >
-                        <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-all">
-                            <Code2 size={19} />
+                        <div className="p-1.5 sm:p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-all shrink-0">
+                            <Code2 size={17} className="sm:w-[19px] sm:h-[19px]" />
                         </div>
-                        <div>
-                            <span className={`font-heading font-bold text-base tracking-tight block ${
+                        <div className="min-w-0">
+                            <span className={`font-heading font-bold text-xs sm:text-base tracking-tight block truncate ${
                                 isDarkMode ? "text-white" : "text-slate-900"
                             }`}>
                                 Ben Agbannon
                             </span>
-                            <span className="text-[11px] text-emerald-500 font-mono tracking-wide">
+                            <span className="text-[9.5px] sm:text-[11px] text-emerald-500 font-mono tracking-wide truncate block">
                                 Ingénieur Logiciel & IA
                             </span>
                         </div>
@@ -99,7 +99,7 @@ const Navbar = ({ onOpenCv, onOpenTerminal, onStartPitch }) => {
                     </div>
 
                     {/* Desktop Navigation Links */}
-                    <div className='hidden md:flex items-center space-x-5 text-xs font-subtitle font-medium'>
+                    <div className='hidden md:flex items-center space-x-4 lg:space-x-5 text-xs font-subtitle font-medium'>
                         {navItems.map((item) => (
                             <button
                                 key={item.id}
@@ -116,7 +116,7 @@ const Navbar = ({ onOpenCv, onOpenTerminal, onStartPitch }) => {
                     </div>
 
                     {/* Right Controls */}
-                    <div className="flex items-center space-x-2 shrink-0">
+                    <div className="flex items-center space-x-1 sm:space-x-2 shrink-0">
                         {/* Terminal CLI Button */}
                         {onOpenTerminal && (
                             <button
@@ -146,47 +146,47 @@ const Navbar = ({ onOpenCv, onOpenTerminal, onStartPitch }) => {
                         <button
                             onClick={() => setIsSearchOpen(true)}
                             aria-label="Recherche"
-                            className={`lg:hidden p-2 rounded-lg border cursor-pointer ${
+                            className={`p-1.5 sm:p-2 rounded-lg border cursor-pointer ${
                                 isDarkMode 
                                     ? "border-emerald-900/40 bg-emerald-950/30 text-emerald-400" 
                                     : "border-slate-200 bg-slate-100 text-slate-700"
                             }`}
                         >
-                            <Search size={16} />
+                            <Search size={15} />
                         </button>
 
                         {/* Interactive CV Modal Trigger */}
                         <button
                             onClick={onOpenCv}
-                            className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-subtitle font-semibold bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-all shadow-sm cursor-pointer"
+                            className="inline-flex items-center space-x-1 sm:space-x-1.5 px-2 sm:px-3 py-1.5 rounded-lg text-xs font-subtitle font-semibold bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-all shadow-sm cursor-pointer"
                         >
-                            <FileDown size={14} />
+                            <FileDown size={13} className="shrink-0" />
                             <span className="hidden sm:inline">Mon CV</span>
-                            <span className="sm:hidden">CV</span>
+                            <span className="sm:hidden text-[11px]">CV</span>
                         </button>
 
                         <button
                             onClick={() => toggleDarkMode(isDarkMode ? "light" : "dark")}
                             aria-label="Basculer le thème"
-                            className={`p-2 rounded-lg border transition-colors cursor-pointer ${
+                            className={`p-1.5 sm:p-2 rounded-lg border transition-colors cursor-pointer ${
                                 isDarkMode
                                     ? "bg-[#042013] border-emerald-900/50 text-emerald-400 hover:bg-emerald-900/40"
                                     : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"
                             }`}
                         >
-                            {isDarkMode ? <Sun size={16} /> : <Moon size={16} />}
+                            {isDarkMode ? <Sun size={15} /> : <Moon size={15} />}
                         </button>
 
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                             aria-label="Menu"
-                            className={`md:hidden p-2 rounded-lg border cursor-pointer ${
+                            className={`md:hidden p-1.5 sm:p-2 rounded-lg border cursor-pointer ${
                                 isDarkMode 
                                     ? "border-emerald-900/50 bg-[#042013] text-slate-200" 
                                     : "border-slate-200 bg-slate-100 text-slate-700"
                             }`}
                         >
-                            {isMenuOpen ? <X size={17} /> : <Menu size={17} />}
+                            {isMenuOpen ? <X size={16} /> : <Menu size={16} />}
                         </button>
                     </div>
                 </div>
@@ -198,24 +198,60 @@ const Navbar = ({ onOpenCv, onOpenTerminal, onStartPitch }) => {
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
-                            className={`md:hidden mt-3 p-4 rounded-xl border ${
-                                isDarkMode ? "bg-[#041a10] border-emerald-900/50" : "bg-white border-slate-200"
-                            } shadow-xl`}
+                            className={`md:hidden mt-2.5 p-3.5 rounded-2xl border ${
+                                isDarkMode ? "bg-[#041a10] border-emerald-900/60" : "bg-white border-slate-200"
+                            } shadow-2xl space-y-3`}
                         >
-                            <div className="space-y-1">
+                            <div className="grid grid-cols-2 gap-1.5">
                                 {navItems.map((item) => (
                                     <button
                                         key={item.id}
                                         onClick={() => scrollToSection(item.id)}
-                                        className={`block w-full text-left px-3 py-2 rounded-lg text-xs font-subtitle font-medium transition-colors ${
+                                        className={`text-left px-3 py-2 rounded-xl text-xs font-subtitle font-medium transition-colors ${
                                             isDarkMode 
-                                                ? "text-slate-300 hover:bg-emerald-900/20 hover:text-emerald-400" 
+                                                ? "text-slate-300 hover:bg-emerald-900/30 hover:text-emerald-400" 
                                                 : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
                                         }`}
                                     >
                                         {item.label}
                                     </button>
                                 ))}
+                            </div>
+
+                            {/* Mobile drawer quick interactive actions */}
+                            <div className="pt-2.5 border-t border-emerald-950/60 grid grid-cols-2 gap-2">
+                                {onOpenTerminal && (
+                                    <button
+                                        onClick={() => {
+                                            setIsMenuOpen(false);
+                                            onOpenTerminal();
+                                        }}
+                                        className="flex items-center justify-center space-x-1.5 p-2 rounded-xl border border-emerald-900/60 bg-emerald-950/40 text-emerald-400 text-xs font-mono"
+                                    >
+                                        <span>$ CLI Terminal</span>
+                                    </button>
+                                )}
+                                {onStartPitch && (
+                                    <button
+                                        onClick={() => {
+                                            setIsMenuOpen(false);
+                                            onStartPitch();
+                                        }}
+                                        className="flex items-center justify-center space-x-1.5 p-2 rounded-xl border border-amber-500/40 bg-amber-500/10 text-amber-400 text-xs font-mono font-medium"
+                                    >
+                                        <span>⚡ Pitch 60s</span>
+                                    </button>
+                                )}
+                                <a
+                                    href="/mon-cv-off.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    download="CV_Ben_Ephraim_Agbannon.pdf"
+                                    className="col-span-2 flex items-center justify-center space-x-2 p-2 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-subtitle font-semibold"
+                                >
+                                    <FileDown size={14} />
+                                    <span>Télécharger le CV PDF</span>
+                                </a>
                             </div>
                         </motion.div>
                     )}
@@ -247,7 +283,7 @@ const Navbar = ({ onOpenCv, onOpenTerminal, onStartPitch }) => {
                                     placeholder="Rechercher par technologie, IA, service, process..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className={`w-full bg-transparent border-none outline-none text-sm font-sans ${
+                                    className={`w-full bg-transparent border-none outline-none text-base sm:text-sm font-sans ${
                                         isDarkMode ? "text-white placeholder-slate-500" : "text-slate-900 placeholder-slate-400"
                                     }`}
                                 />

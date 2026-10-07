@@ -40,7 +40,7 @@ const MainContent = () => {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
+    <div className={`w-full max-w-full overflow-x-hidden min-h-screen transition-colors duration-300 ${
       isDarkMode 
         ? "bg-[#03110a] text-slate-100" 
         : "bg-[#f8faf9] text-slate-900"

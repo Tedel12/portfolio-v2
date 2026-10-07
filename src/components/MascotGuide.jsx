@@ -654,7 +654,7 @@ const MascotGuide = ({
                             stiffness: 110,
                             mass: 0.9
                         }}
-                        className="absolute z-40 w-[92%] max-w-lg md:max-w-xl transition-all"
+                        className="absolute z-40 w-[calc(100vw-32px)] max-w-lg md:max-w-xl transition-all"
                     >
                         {/* Mascot & Spotlight beam */}
                         <div className="flex items-start space-x-3 md:space-x-4 mb-2">
@@ -824,14 +824,14 @@ const MascotGuide = ({
             </AnimatePresence>
 
             {/* MINIMIZED ASSISTANCE WIDGET */}
-            <div className="fixed bottom-6 right-6 z-40">
+            <div className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-40">
                 <AnimatePresence>
                     {isWidgetMenuOpen && (
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, y: 10 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                            className="absolute bottom-16 right-0 w-64 rounded-2xl border border-emerald-800/60 bg-[#031a10]/95 backdrop-blur-xl p-4 shadow-2xl text-slate-100 mb-2"
+                            className="absolute bottom-16 right-0 w-[calc(100vw-32px)] max-w-[280px] sm:w-64 rounded-2xl border border-emerald-800/60 bg-[#031a10]/95 backdrop-blur-xl p-4 shadow-2xl text-slate-100 mb-2"
                         >
                             <div className="flex items-center justify-between pb-2 mb-2 border-b border-emerald-950">
                                 <span className="text-xs font-mono font-bold text-emerald-400">

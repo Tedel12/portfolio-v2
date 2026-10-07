@@ -296,7 +296,7 @@ Astuce: Consultez la section 'Certificats' sur la page pour briser la baie vitrÃ
               onChange={(e) => setInputVal(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Tapez 'ben --help' ou 'ben ros'..."
-              className="flex-1 bg-transparent text-emerald-200 outline-none font-mono text-xs placeholder:text-emerald-900"
+              className="flex-1 bg-transparent text-emerald-200 outline-none font-mono text-base sm:text-xs placeholder:text-emerald-900"
             />
             <button
               onClick={() => handleCommand(inputVal)}

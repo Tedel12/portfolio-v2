@@ -6,33 +6,33 @@ const ProjectDetailModal = ({ project, onClose, isDarkMode }) => {
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md">
-      <div className={`relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border p-6 md:p-8 transition-colors ${
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-black/75 backdrop-blur-md">
+      <div className={`relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-2xl border p-4 sm:p-6 md:p-8 transition-colors ${
         isDarkMode 
           ? 'bg-[#03180e] border-emerald-800/50 text-slate-100 shadow-2xl' 
           : 'bg-white border-slate-200 text-slate-900 shadow-xl'
       }`}>
-        <div className={`flex items-center justify-between pb-4 border-b mb-6 ${
+        <div className={`flex items-center justify-between pb-3 sm:pb-4 border-b mb-5 sm:mb-6 ${
           isDarkMode ? 'border-emerald-950/70' : 'border-slate-100'
         }`}>
-          <div className="flex items-center space-x-2.5">
-            <span className={`text-[11px] font-mono font-medium px-2.5 py-1 rounded-md border ${
+          <div className="flex items-center space-x-2 sm:space-x-2.5 min-w-0 mr-2">
+            <span className={`text-[10px] sm:text-[11px] font-mono font-medium px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md border shrink-0 ${
               isDarkMode 
                 ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' 
                 : 'bg-emerald-50 text-emerald-700 border-emerald-200'
             }`}>
               {project.category}
             </span>
-            <h2 className="text-lg md:text-xl font-heading font-bold truncate max-w-md">{project.title}</h2>
+            <h2 className="text-base sm:text-lg md:text-xl font-heading font-bold truncate">{project.title}</h2>
           </div>
           <button
             onClick={onClose}
             aria-label="Fermer"
-            className={`p-2 rounded-lg transition-colors cursor-pointer ${
+            className={`p-1.5 sm:p-2 rounded-lg transition-colors cursor-pointer shrink-0 ${
               isDarkMode ? 'hover:bg-emerald-900/40 text-slate-400' : 'hover:bg-slate-100 text-slate-600'
             }`}
           >
-            <X size={20} />
+            <X size={18} className="sm:w-5 sm:h-5" />
           </button>
         </div>
 

@@ -147,7 +147,7 @@ const TinyMlPlaygroundModal = ({ isOpen, onClose }) => {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6 overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto">
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -162,25 +162,25 @@ const TinyMlPlaygroundModal = ({ isOpen, onClose }) => {
           initial={{ opacity: 0, scale: 0.92, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.92, y: 15 }}
-          className={`relative w-full max-w-4xl rounded-2xl border p-5 md:p-7 shadow-2xl z-10 transition-colors ${
+          className={`relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-2xl border p-4 sm:p-5 md:p-7 shadow-2xl z-10 transition-colors ${
             isDarkMode 
               ? "bg-[#03180f] border-emerald-900/60 text-slate-100 shadow-emerald-950/90" 
               : "bg-white border-slate-200 text-slate-900 shadow-2xl"
           }`}
         >
           {/* Header */}
-          <div className="flex items-center justify-between pb-4 mb-4 border-b border-emerald-950/60">
-            <div className="flex items-center space-x-3">
-              <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                <Cpu size={22} />
+          <div className="flex items-center justify-between pb-3 sm:pb-4 mb-4 border-b border-emerald-950/60">
+            <div className="flex items-center space-x-2.5 sm:space-x-3 min-w-0 mr-2">
+              <div className="p-1.5 sm:p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
+                <Cpu size={20} className="sm:w-[22px] sm:h-[22px]" />
               </div>
-              <div>
-                <h3 className={`text-xl font-heading font-bold tracking-tight ${isDarkMode ? "text-white" : "text-slate-900"}`}>
+              <div className="min-w-0">
+                <h3 className={`text-sm sm:text-lg md:text-xl font-heading font-bold tracking-tight truncate ${isDarkMode ? "text-white" : "text-slate-900"}`}>
                   Playground d'Inférence TinyML en Temps Réel
                 </h3>
-                <span className="text-xs font-mono text-emerald-400 flex items-center space-x-1.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span>Modèle Quantifié INT8 • Inférence Edge Locale (Microcontrôleur)</span>
+                <span className="text-[10px] sm:text-xs font-mono text-emerald-400 flex items-center space-x-1.5 truncate">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
+                  <span className="truncate">Modèle Quantifié INT8 • Inférence Edge Locale</span>
                 </span>
               </div>
             </div>
