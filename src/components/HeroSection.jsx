@@ -40,8 +40,12 @@ const HeroSection = () => {
                     >
                         {/* Status Badge */}
                         <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 mb-6">
-                            <span className="flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-subtitle font-semibold border bg-emerald-500/10 border-emerald-500/20 text-emerald-400">
-                                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                            <span className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-subtitle font-semibold border ${
+                                isDarkMode 
+                                    ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" 
+                                    : "bg-emerald-50 border-emerald-200 text-emerald-800 shadow-xs"
+                            }`}>
+                                <span className={`w-2 h-2 rounded-full animate-pulse ${isDarkMode ? "bg-emerald-400" : "bg-emerald-600"}`} />
                                 <span>Disponible pour Projets & R&D (Freelance / CDI)</span>
                             </span>
                         </motion.div>
@@ -49,11 +53,15 @@ const HeroSection = () => {
                         {/* Heading with font-sora */}
                         <motion.h1
                             variants={itemVariants}
-                            className="text-3xl sm:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight mb-5 leading-tight text-white"
+                            className={`text-3xl sm:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight mb-5 leading-tight ${
+                                isDarkMode ? "text-white" : "text-slate-900"
+                            }`}
                         >
                             Ben Ephraïm Agbannon
                             <br />
-                            <span className="text-emerald-400 font-semibold text-2xl sm:text-3xl lg:text-4xl block mt-2">
+                            <span className={`font-semibold text-2xl sm:text-3xl lg:text-4xl block mt-2 ${
+                                isDarkMode ? "text-emerald-400" : "text-emerald-600"
+                            }`}>
                                 Ingénieur Logiciel & IA
                             </span>
                         </motion.h1>
@@ -70,20 +78,36 @@ const HeroSection = () => {
 
                         {/* Interactive Pill-like badges for expertise */}
                         <motion.div variants={itemVariants} className="flex flex-wrap gap-2 mb-8">
-                            <span className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-subtitle font-medium bg-[#052618] border border-emerald-900/60 text-emerald-300">
-                                <Bot size={13} className="text-emerald-400" />
+                            <span className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-subtitle font-medium border ${
+                                isDarkMode 
+                                    ? "bg-[#052618] border-emerald-900/60 text-emerald-300" 
+                                    : "bg-white border-slate-200 text-slate-800 shadow-xs"
+                            }`}>
+                                <Bot size={13} className={isDarkMode ? "text-emerald-400" : "text-emerald-600"} />
                                 <span>Physical AI & ROS2</span>
                             </span>
-                            <span className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-subtitle font-medium bg-[#052618] border border-emerald-900/60 text-emerald-300">
-                                <Cpu size={13} className="text-emerald-400" />
+                            <span className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-subtitle font-medium border ${
+                                isDarkMode 
+                                    ? "bg-[#052618] border-emerald-900/60 text-emerald-300" 
+                                    : "bg-white border-slate-200 text-slate-800 shadow-xs"
+                            }`}>
+                                <Cpu size={13} className={isDarkMode ? "text-emerald-400" : "text-emerald-600"} />
                                 <span>ML, DL & TinyML</span>
                             </span>
-                            <span className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-subtitle font-medium bg-[#052618] border border-emerald-900/60 text-emerald-300">
-                                <Smartphone size={13} className="text-emerald-400" />
+                            <span className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-subtitle font-medium border ${
+                                isDarkMode 
+                                    ? "bg-[#052618] border-emerald-900/60 text-emerald-300" 
+                                    : "bg-white border-slate-200 text-slate-800 shadow-xs"
+                            }`}>
+                                <Smartphone size={13} className={isDarkMode ? "text-emerald-400" : "text-emerald-600"} />
                                 <span>Mobile Cross-Platform</span>
                             </span>
-                            <span className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-subtitle font-medium bg-[#052618] border border-emerald-900/60 text-emerald-300">
-                                <Layers size={13} className="text-emerald-400" />
+                            <span className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-subtitle font-medium border ${
+                                isDarkMode 
+                                    ? "bg-[#052618] border-emerald-900/60 text-emerald-300" 
+                                    : "bg-white border-slate-200 text-slate-800 shadow-xs"
+                            }`}>
+                                <Layers size={13} className={isDarkMode ? "text-emerald-400" : "text-emerald-600"} />
                                 <span>Architectures SaaS Scalables</span>
                             </span>
                         </motion.div>
@@ -95,7 +119,9 @@ const HeroSection = () => {
                         >
                             <button
                                 onClick={() => scrollToSection("services")}
-                                className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-subtitle font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-emerald-950/60 cursor-pointer flex items-center space-x-2"
+                                className={`px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-subtitle font-bold text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center space-x-2 ${
+                                    isDarkMode ? "shadow-lg shadow-emerald-950/60" : "shadow-md shadow-emerald-600/20"
+                                }`}
                             >
                                 <span>Découvrir mes services</span>
                                 <ArrowRight size={15} />
@@ -109,10 +135,10 @@ const HeroSection = () => {
                                 className={`inline-flex items-center space-x-2 px-5 py-3 rounded-xl font-subtitle font-semibold text-xs uppercase tracking-wider border transition-all ${
                                     isDarkMode
                                         ? "bg-[#042013] border-emerald-900/60 hover:bg-[#07321e] text-slate-200"
-                                        : "bg-white border-slate-300 hover:bg-slate-100 text-slate-800"
+                                        : "bg-white border-slate-300 hover:bg-slate-100 text-slate-800 shadow-xs"
                                 }`}
                             >
-                                <FileDown size={15} className="text-emerald-400" />
+                                <FileDown size={15} className={isDarkMode ? "text-emerald-400" : "text-emerald-600"} />
                                 <span>Télécharger mon CV</span>
                             </a>
 
@@ -121,7 +147,7 @@ const HeroSection = () => {
                                 className={`px-5 py-3 rounded-xl font-subtitle font-medium text-xs border transition-colors cursor-pointer ${
                                     isDarkMode
                                         ? "border-emerald-950 hover:border-emerald-800 text-slate-400 hover:text-white"
-                                        : "border-slate-300 hover:border-slate-400 text-slate-600"
+                                        : "border-slate-300 hover:border-slate-400 text-slate-700 bg-white"
                                 }`}
                             >
                                 Me contacter
@@ -133,7 +159,9 @@ const HeroSection = () => {
                             variants={itemVariants}
                             className="flex items-center space-x-3 text-sm"
                         >
-                            <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400">
+                            <span className={`text-[11px] font-mono uppercase tracking-wider ${
+                                isDarkMode ? "text-slate-400" : "text-slate-600"
+                            }`}>
                                 Réseaux vérifiés :
                             </span>
                             <a
@@ -141,7 +169,11 @@ const HeroSection = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="GitHub"
-                                className="p-2.5 rounded-lg border border-emerald-900/40 bg-[#041c12] text-slate-300 hover:text-emerald-400 hover:border-emerald-600 transition-colors"
+                                className={`p-2.5 rounded-lg border transition-colors ${
+                                    isDarkMode 
+                                        ? "border-emerald-900/40 bg-[#041c12] text-slate-300 hover:text-emerald-400 hover:border-emerald-600" 
+                                        : "border-slate-200 bg-white text-slate-700 hover:text-emerald-600 hover:border-emerald-400 shadow-xs"
+                                }`}
                             >
                                 <FiGithub size={16} />
                             </a>
@@ -150,14 +182,22 @@ const HeroSection = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="LinkedIn"
-                                className="p-2.5 rounded-lg border border-emerald-900/40 bg-[#041c12] text-slate-300 hover:text-emerald-400 hover:border-emerald-600 transition-colors"
+                                className={`p-2.5 rounded-lg border transition-colors ${
+                                    isDarkMode 
+                                        ? "border-emerald-900/40 bg-[#041c12] text-slate-300 hover:text-emerald-400 hover:border-emerald-600" 
+                                        : "border-slate-200 bg-white text-slate-700 hover:text-emerald-600 hover:border-emerald-400 shadow-xs"
+                                }`}
                             >
                                 <FiLinkedin size={16} />
                             </a>
                             <a
                                 href="mailto:benagbannon@gmail.com"
                                 aria-label="Email"
-                                className="p-2.5 rounded-lg border border-emerald-900/40 bg-[#041c12] text-slate-300 hover:text-emerald-400 hover:border-emerald-600 transition-colors"
+                                className={`p-2.5 rounded-lg border transition-colors ${
+                                    isDarkMode 
+                                        ? "border-emerald-900/40 bg-[#041c12] text-slate-300 hover:text-emerald-400 hover:border-emerald-600" 
+                                        : "border-slate-200 bg-white text-slate-700 hover:text-emerald-600 hover:border-emerald-400 shadow-xs"
+                                }`}
                             >
                                 <Mail size={16} />
                             </a>
@@ -186,21 +226,29 @@ const HeroSection = () => {
                                 <div className="mt-4 px-2 pb-1">
                                     <div className="flex items-center justify-between">
                                         <div>
-                                            <div className="font-heading font-bold text-sm text-white">
+                                            <div className={`font-heading font-bold text-sm ${
+                                                isDarkMode ? "text-white" : "text-slate-900"
+                                            }`}>
                                                 Ben Ephraïm Agbannon
                                             </div>
-                                            <div className="text-xs text-slate-400">
+                                            <div className={`text-xs ${
+                                                isDarkMode ? "text-slate-400" : "text-slate-500"
+                                            }`}>
                                                 Abomey-Calavi, Atlantique, Bénin
                                             </div>
                                         </div>
-                                        <div className="flex items-center space-x-1 text-xs text-emerald-400 font-mono font-medium">
+                                        <div className={`flex items-center space-x-1 text-xs font-mono font-medium ${
+                                            isDarkMode ? "text-emerald-400" : "text-emerald-700"
+                                        }`}>
                                             <CheckCircle2 size={13} />
                                             <span>Disponible</span>
                                         </div>
                                     </div>
 
                                     {/* Real credentials from CV */}
-                                    <div className="mt-3 pt-3 border-t border-emerald-950 flex items-center justify-between text-[11px] font-mono text-emerald-400">
+                                    <div className={`mt-3 pt-3 border-t flex items-center justify-between text-[11px] font-mono ${
+                                        isDarkMode ? "border-emerald-950 text-emerald-400" : "border-slate-200 text-emerald-700 font-semibold"
+                                    }`}>
                                         <span>Licence SIL (ISM Adonaï)</span>
                                         <span>BEST EXPERTS GROUP</span>
                                     </div>

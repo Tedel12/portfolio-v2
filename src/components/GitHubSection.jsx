@@ -197,21 +197,31 @@ const GitHubSection = () => {
                         </div>
 
                         {/* Activity Overview (Fidèle à la capture 2) */}
-                        <div className="mt-6 pt-5 border-t border-emerald-950/60 grid md:grid-cols-2 gap-6 items-center">
+                        <div className={`mt-6 pt-5 border-t grid md:grid-cols-2 gap-6 items-center ${
+                            isDarkMode ? "border-emerald-950/60" : "border-slate-200"
+                        }`}>
                             {/* Left: Repositories list */}
                             <div>
-                                <div className="text-xs font-heading font-semibold text-white mb-2">
+                                <div className={`text-xs font-heading font-semibold mb-2 ${
+                                    isDarkMode ? "text-white" : "text-slate-900"
+                                }`}>
                                     Aperçu de l'activité
                                 </div>
                                 <p className={`text-xs leading-relaxed ${isDarkMode ? "text-slate-300" : "text-slate-600"}`}>
                                     Contributions actives sur{" "}
-                                    <a href="https://github.com/Tedel12" target="_blank" rel="noopener noreferrer" className="text-emerald-400 font-semibold hover:underline">
+                                    <a href="https://github.com/Tedel12" target="_blank" rel="noopener noreferrer" className={`font-semibold hover:underline ${
+                                        isDarkMode ? "text-emerald-400" : "text-emerald-700"
+                                    }`}>
                                         Tedel12/lms
                                     </a>,{" "}
-                                    <a href="https://github.com/Tedel12" target="_blank" rel="noopener noreferrer" className="text-emerald-400 font-semibold hover:underline">
+                                    <a href="https://github.com/Tedel12" target="_blank" rel="noopener noreferrer" className={`font-semibold hover:underline ${
+                                        isDarkMode ? "text-emerald-400" : "text-emerald-700"
+                                    }`}>
                                         Tedel12/agency-ai
                                     </a>,{" "}
-                                    <a href="https://github.com/Tedel12" target="_blank" rel="noopener noreferrer" className="text-emerald-400 font-semibold hover:underline">
+                                    <a href="https://github.com/Tedel12" target="_blank" rel="noopener noreferrer" className={`font-semibold hover:underline ${
+                                        isDarkMode ? "text-emerald-400" : "text-emerald-700"
+                                    }`}>
                                         Tedel12/QuickShow-client
                                     </a>{" "}
                                     et plus de 25 autres dépôts.
@@ -223,17 +233,17 @@ const GitHubSection = () => {
                                 isDarkMode ? "bg-[#03150d] border-emerald-950" : "bg-slate-50 border-slate-200"
                             }`}>
                                 <div className="text-center">
-                                    <div className="text-base font-bold text-emerald-400">100%</div>
+                                    <div className={`text-base font-bold ${isDarkMode ? "text-emerald-400" : "text-emerald-700"}`}>100%</div>
                                     <div className="text-[10px] text-slate-400">Commits vérifiés</div>
                                 </div>
-                                <div className="w-px h-8 bg-emerald-950" />
+                                <div className={`w-px h-8 ${isDarkMode ? "bg-emerald-950" : "bg-slate-200"}`} />
                                 <div className="text-center">
-                                    <div className="text-base font-bold text-emerald-400">Code review</div>
+                                    <div className={`text-base font-bold ${isDarkMode ? "text-emerald-400" : "text-emerald-700"}`}>Code review</div>
                                     <div className="text-[10px] text-slate-400">PRs & Issues</div>
                                 </div>
-                                <div className="w-px h-8 bg-emerald-950" />
+                                <div className={`w-px h-8 ${isDarkMode ? "bg-emerald-950" : "bg-slate-200"}`} />
                                 <div className="text-center">
-                                    <div className="text-base font-bold text-emerald-400">30+</div>
+                                    <div className={`text-base font-bold ${isDarkMode ? "text-emerald-400" : "text-emerald-700"}`}>30+</div>
                                     <div className="text-[10px] text-slate-400">Projets publics</div>
                                 </div>
                             </div>
@@ -248,7 +258,7 @@ const GitHubSection = () => {
                                 onClick={() => setSelectedYear(yr)}
                                 className={`w-full py-2.5 px-4 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer text-center ${
                                     selectedYear === yr
-                                        ? "bg-emerald-500 text-slate-950 shadow-md shadow-emerald-950"
+                                        ? `bg-emerald-500 text-slate-950 ${isDarkMode ? "shadow-md shadow-emerald-950" : "shadow-sm shadow-emerald-600/20"}`
                                         : isDarkMode
                                             ? "bg-[#042013] border border-emerald-900/50 text-slate-400 hover:text-white hover:border-emerald-600"
                                             : "bg-slate-100 border border-slate-200 text-slate-600 hover:bg-slate-200"

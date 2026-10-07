@@ -73,12 +73,18 @@ const ContactSection = () => {
             <div className="max-w-6xl mx-auto relative z-10">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-md text-xs font-subtitle font-semibold bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 mb-3">
+                    <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-md text-xs font-subtitle font-semibold mb-3 ${
+                        isDarkMode 
+                            ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" 
+                            : "bg-emerald-50 border-emerald-200 text-emerald-800"
+                    }`}>
                         <MessageSquare size={13} />
                         <span>Discutons de vos projets</span>
                     </div>
 
-                    <h2 className="text-3xl md:text-5xl font-heading font-bold tracking-tight mb-4 text-white">
+                    <h2 className={`text-3xl md:text-5xl font-heading font-bold tracking-tight mb-4 ${
+                        isDarkMode ? "text-white" : "text-slate-900"
+                    }`}>
                         Prendre contact.
                     </h2>
 
@@ -92,9 +98,13 @@ const ContactSection = () => {
                 <div className="grid lg:grid-cols-2 gap-10 items-start">
                     {/* Form */}
                     <div className={`p-6 md:p-8 rounded-2xl border ${
-                        isDarkMode ? "bg-gradient-to-b from-[#052618]/90 to-[#031910]/95 border-emerald-900/50 shadow-xl" : "bg-slate-50 border-slate-200"
+                        isDarkMode 
+                            ? "bg-gradient-to-b from-[#052618]/90 to-[#031910]/95 border-emerald-900/50 shadow-xl" 
+                            : "bg-white border-slate-200/90 shadow-sm"
                     }`}>
-                        <h3 className="text-lg font-heading font-bold text-white mb-6">
+                        <h3 className={`text-lg font-heading font-bold mb-6 ${
+                            isDarkMode ? "text-white" : "text-slate-900"
+                        }`}>
                             Envoyez-moi un message direct
                         </h3>
 
@@ -136,7 +146,9 @@ const ContactSection = () => {
                             <button
                                 disabled={isSubmitting}
                                 type="submit"
-                                className="w-full bg-emerald-500 hover:bg-emerald-400 disabled:bg-emerald-800 text-slate-950 py-3.5 px-6 rounded-xl text-xs font-subtitle font-bold uppercase tracking-wider transition-all flex items-center justify-center space-x-2 shadow-lg shadow-emerald-950 cursor-pointer"
+                                className={`w-full bg-emerald-500 hover:bg-emerald-400 disabled:bg-emerald-800 text-slate-950 py-3.5 px-6 rounded-xl text-xs font-subtitle font-bold uppercase tracking-wider transition-all flex items-center justify-center space-x-2 cursor-pointer ${
+                                    isDarkMode ? "shadow-lg shadow-emerald-950" : "shadow-md shadow-emerald-600/20"
+                                }`}
                             >
                                 {isSubmitting ? (
                                     <>
@@ -157,9 +169,11 @@ const ContactSection = () => {
                     <div className="space-y-6">
                         {/* Coordonnées */}
                         <div className={`p-6 rounded-2xl border ${
-                            isDarkMode ? "bg-[#042013]/60 border-emerald-950" : "bg-white border-slate-200"
+                            isDarkMode ? "bg-[#042013]/60 border-emerald-950" : "bg-white border-slate-200/90 shadow-xs"
                         }`}>
-                            <h4 className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold mb-4">
+                            <h4 className={`text-xs font-mono uppercase tracking-wider font-bold mb-4 ${
+                                isDarkMode ? "text-emerald-400" : "text-emerald-700"
+                            }`}>
                                 Coordonnées directes
                             </h4>
                             <div className="space-y-3">
@@ -170,12 +184,18 @@ const ContactSection = () => {
                                             isDarkMode ? "bg-[#03150d] border-emerald-950" : "bg-slate-50 border-slate-200"
                                         }`}
                                     >
-                                        <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                        <div className={`p-2 rounded-lg border ${
+                                            isDarkMode 
+                                                ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" 
+                                                : "bg-emerald-50 text-emerald-700 border-emerald-200"
+                                        }`}>
                                             <info.icon size={16} />
                                         </div>
                                         <div>
                                             <div className="text-[11px] text-slate-400 font-mono">{info.label}</div>
-                                            <div className="font-subtitle font-semibold text-xs text-white">{info.value}</div>
+                                            <div className={`font-subtitle font-semibold text-xs ${
+                                                isDarkMode ? "text-white" : "text-slate-900"
+                                            }`}>{info.value}</div>
                                         </div>
                                     </div>
                                 ))}
@@ -184,18 +204,26 @@ const ContactSection = () => {
 
                         {/* WhatsApp / Call action */}
                         <div className={`p-6 rounded-2xl border ${
-                            isDarkMode ? "bg-gradient-to-r from-[#052818] to-[#041c12] border-emerald-800/40" : "bg-emerald-50 border-emerald-200"
+                            isDarkMode 
+                                ? "bg-gradient-to-r from-[#052818] to-[#041c12] border-emerald-800/40" 
+                                : "bg-emerald-50/70 border-emerald-200 shadow-xs"
                         }`}>
-                            <div className="flex items-center space-x-2 text-emerald-400 font-subtitle font-bold text-sm mb-2">
+                            <div className={`flex items-center space-x-2 font-subtitle font-bold text-sm mb-2 ${
+                                isDarkMode ? "text-emerald-400" : "text-emerald-800"
+                            }`}>
                                 <PhoneCall size={18} />
                                 <span>Échange rapide par téléphone ou WhatsApp</span>
                             </div>
-                            <p className="text-xs leading-relaxed text-slate-300 mb-4">
+                            <p className={`text-xs leading-relaxed mb-4 ${
+                                isDarkMode ? "text-slate-300" : "text-slate-700"
+                            }`}>
                                 Vous préférez discuter directement de vos délais et budget ? Conconvenons d'un créneau vocal.
                             </p>
                             <button
                                 onClick={() => setShowScheduleModal(true)}
-                                className="w-full py-2.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-subtitle font-bold text-xs transition-all shadow-md shadow-emerald-950 cursor-pointer"
+                                className={`w-full py-2.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-subtitle font-bold text-xs transition-all cursor-pointer ${
+                                    isDarkMode ? "shadow-md shadow-emerald-950" : "shadow-sm shadow-emerald-600/20"
+                                }`}
                             >
                                 Planifier un appel direct
                             </button>

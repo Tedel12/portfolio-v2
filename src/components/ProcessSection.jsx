@@ -21,7 +21,9 @@ const ProcessSection = ({ onStartProjectClick }) => {
                 {/* Header */}
                 <div className="mb-16">
                     <div className="flex items-center justify-between mb-2">
-                        <span className="text-[11px] font-mono uppercase tracking-widest text-emerald-400 font-bold">
+                        <span className={`text-[11px] font-mono uppercase tracking-widest font-bold ${
+                            isDarkMode ? "text-emerald-400" : "text-emerald-700"
+                        }`}>
                             ÉTAPE PAR ÉTAPE
                         </span>
                         {/* Process colorful pill dots from capture 3 */}
@@ -33,7 +35,9 @@ const ProcessSection = ({ onStartProjectClick }) => {
                         </div>
                     </div>
 
-                    <h2 className="text-3xl md:text-5xl font-heading font-bold tracking-tight text-white mb-4">
+                    <h2 className={`text-3xl md:text-5xl font-heading font-bold tracking-tight mb-4 ${
+                        isDarkMode ? "text-white" : "text-slate-900"
+                    }`}>
                         Mon process.
                     </h2>
 
@@ -45,7 +49,9 @@ const ProcessSection = ({ onStartProjectClick }) => {
                 {/* Alternating Process Timeline (Fidèle à la Capture 3) */}
                 <div className="relative py-8">
                     {/* Vertical Connecting Center Line */}
-                    <div className="hidden lg:block absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2 w-px bg-emerald-900/40" />
+                    <div className={`hidden lg:block absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2 w-px ${
+                        isDarkMode ? "bg-emerald-900/40" : "bg-emerald-300"
+                    }`} />
 
                     <div className="space-y-16">
                         {PROCESS_STEPS.map((step, idx) => {
@@ -64,10 +70,14 @@ const ProcessSection = ({ onStartProjectClick }) => {
                                         <div className={`p-6 md:p-8 rounded-2xl border transition-all duration-300 ${
                                             isDarkMode
                                                 ? "bg-gradient-to-br from-[#052818]/90 to-[#031910]/95 border-emerald-900/50 hover:border-emerald-500/50 shadow-xl"
-                                                : "bg-white border-slate-200 shadow-md"
+                                                : "bg-white border-slate-200/90 shadow-sm hover:border-emerald-400"
                                         }`}>
                                             <div className="flex items-center justify-between mb-4">
-                                                <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                                <div className={`p-3 rounded-xl border ${
+                                                    isDarkMode 
+                                                        ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" 
+                                                        : "bg-emerald-50 text-emerald-700 border-emerald-200"
+                                                }`}>
                                                     <StepIcon size={22} />
                                                 </div>
                                                 <span className={`text-[10px] font-mono font-semibold px-2.5 py-1 rounded-md border ${step.badgeBg}`}>
@@ -75,7 +85,9 @@ const ProcessSection = ({ onStartProjectClick }) => {
                                                 </span>
                                             </div>
 
-                                            <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-3">
+                                            <h3 className={`text-xl md:text-2xl font-heading font-bold mb-3 ${
+                                                isDarkMode ? "text-white" : "text-slate-900"
+                                            }`}>
                                                 {step.title}
                                             </h3>
 
@@ -87,7 +99,7 @@ const ProcessSection = ({ onStartProjectClick }) => {
 
                                     {/* Center Ribbon / Step Indicator (Fidèle à la Capture 3) */}
                                     <div className="shrink-0 flex items-center justify-center z-10">
-                                        <div className={`w-14 h-24 md:w-16 md:h-28 rounded-xl bg-gradient-to-b ${step.accentColor} flex flex-col items-center justify-center text-slate-950 font-bold shadow-lg shadow-black/50 border border-white/20`}>
+                                        <div className={`w-14 h-24 md:w-16 md:h-28 rounded-xl bg-gradient-to-b ${step.accentColor} flex flex-col items-center justify-center text-slate-950 font-bold shadow-lg shadow-black/30 border border-white/20`}>
                                             <span className="text-xl md:text-2xl font-heading font-extrabold leading-none">
                                                 {step.stepNumber}
                                             </span>
@@ -102,7 +114,7 @@ const ProcessSection = ({ onStartProjectClick }) => {
                                         <div className={`p-6 rounded-2xl border ${
                                             isDarkMode
                                                 ? "bg-[#03170e]/50 border-emerald-950/60"
-                                                : "bg-emerald-50/50 border-emerald-100"
+                                                : "bg-white border-slate-200/90 shadow-xs"
                                         }`}>
                                             <p className={`text-xs md:text-sm leading-relaxed font-sans ${isDarkMode ? "text-slate-300" : "text-slate-700"}`}>
                                                 {step.sideNote}
@@ -119,7 +131,9 @@ const ProcessSection = ({ onStartProjectClick }) => {
                 <div className="mt-16 text-center">
                     <button
                         onClick={onStartProjectClick}
-                        className="inline-flex items-center space-x-2 py-3 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-subtitle font-bold text-sm transition-all shadow-lg shadow-emerald-950/60 cursor-pointer"
+                        className={`inline-flex items-center space-x-2 py-3 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-subtitle font-bold text-sm transition-all cursor-pointer ${
+                            isDarkMode ? "shadow-lg shadow-emerald-950/60" : "shadow-md shadow-emerald-600/20"
+                        }`}
                     >
                         <span>Démarrer un projet avec cette méthode</span>
                         <ArrowRight size={16} />

@@ -56,8 +56,10 @@ const SkillsSection = ({ onOpenRos, onOpenTinyMl }) => {
             >
               <div>
                 {/* Column Title */}
-                <div className="flex items-center space-x-2.5 pb-4 mb-6 border-b border-emerald-950/60">
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+                <div className={`flex items-center space-x-2.5 pb-4 mb-6 border-b ${
+                  isDarkMode ? "border-emerald-950/60" : "border-slate-200"
+                }`}>
+                  <div className={`w-2.5 h-2.5 rounded-full ${isDarkMode ? "bg-emerald-400" : "bg-emerald-600"}`} />
                   <h3 className={`text-lg font-heading font-bold tracking-tight ${
                     isDarkMode ? "text-white" : "text-slate-900"
                   }`}>
@@ -77,7 +79,7 @@ const SkillsSection = ({ onOpenRos, onOpenTinyMl }) => {
                         className={`group p-3.5 rounded-xl border transition-all duration-200 cursor-pointer ${
                           isDarkMode
                             ? "bg-[#041c12]/60 border-emerald-950/70 hover:border-emerald-500/70 hover:bg-[#072a1b]/80 hover:shadow-lg hover:shadow-emerald-950/50"
-                            : "bg-white border-slate-200 hover:border-emerald-400 hover:shadow-md"
+                            : "bg-white border-slate-200/90 hover:border-emerald-500 hover:shadow-sm"
                         }`}
                       >
                         <div className="flex items-start space-x-3.5">
@@ -91,12 +93,16 @@ const SkillsSection = ({ onOpenRos, onOpenTinyMl }) => {
 
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between mb-1">
-                              <h4 className={`text-sm font-subtitle font-bold tracking-tight group-hover:text-emerald-400 transition-colors ${
-                                isDarkMode ? "text-white" : "text-slate-900"
+                              <h4 className={`text-sm font-subtitle font-bold tracking-tight transition-colors ${
+                                isDarkMode 
+                                  ? "text-white group-hover:text-emerald-400" 
+                                  : "text-slate-900 group-hover:text-emerald-700"
                               }`}>
                                 {item.name}
                               </h4>
-                              <span className="opacity-0 group-hover:opacity-100 transition-opacity text-emerald-400 text-[10px] font-mono flex items-center space-x-0.5">
+                              <span className={`opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-mono flex items-center space-x-0.5 ${
+                                isDarkMode ? "text-emerald-400" : "text-emerald-700"
+                              }`}>
                                 <span>Détails</span>
                                 <ExternalLink size={10} />
                               </span>
@@ -114,7 +120,9 @@ const SkillsSection = ({ onOpenRos, onOpenTinyMl }) => {
               </div>
 
               {/* Column Footer */}
-              <div className="pt-6 mt-6 border-t border-emerald-950/60 flex items-center justify-between text-[11px] text-emerald-400 font-mono">
+              <div className={`pt-6 mt-6 border-t flex items-center justify-between text-[11px] font-mono ${
+                isDarkMode ? "border-emerald-950/60 text-emerald-400" : "border-slate-200 text-emerald-700 font-semibold"
+              }`}>
                 <span>{column.items.length} technologies actives</span>
                 <span className="flex items-center space-x-1">
                   <CheckCircle2 size={12} />
@@ -129,10 +137,14 @@ const SkillsSection = ({ onOpenRos, onOpenTinyMl }) => {
         <div className={`mt-12 p-6 md:p-8 rounded-2xl border transition-all ${
           isDarkMode
             ? "bg-gradient-to-r from-[#042114] via-[#052b1b] to-[#042114] border-emerald-800/40"
-            : "bg-emerald-50 border-emerald-200"
+            : "bg-emerald-50 border-emerald-200 shadow-xs"
         }`}>
           <div className="grid md:grid-cols-3 gap-6 items-center">
-            <div className="p-3 rounded-xl hover:bg-emerald-900/20 transition-all border border-transparent hover:border-emerald-800/50">
+            <div className={`p-3 rounded-xl transition-all border ${
+              isDarkMode 
+                ? "border-transparent hover:border-emerald-800/50 hover:bg-emerald-900/20" 
+                : "border-transparent hover:border-emerald-300 hover:bg-white/60"
+            }`}>
               <div 
                 onClick={() => {
                   const rosItem = TECH_COLUMNS[1].items.find(i => i.name.includes("ROS2"));
@@ -140,7 +152,7 @@ const SkillsSection = ({ onOpenRos, onOpenTinyMl }) => {
                 }}
                 className="flex items-center space-x-4 cursor-pointer mb-2.5"
               >
-                <div className="text-emerald-400 shrink-0">
+                <div className={`${isDarkMode ? "text-emerald-400" : "text-emerald-700"} shrink-0`}>
                   <Bot size={32} />
                 </div>
                 <div>
@@ -151,7 +163,11 @@ const SkillsSection = ({ onOpenRos, onOpenTinyMl }) => {
               {onOpenRos && (
                 <button
                   onClick={onOpenRos}
-                  className="w-full py-1.5 px-3 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-300 font-mono text-[11px] font-semibold flex items-center justify-center space-x-1.5 transition cursor-pointer"
+                  className={`w-full py-1.5 px-3 rounded-lg font-mono text-[11px] font-semibold flex items-center justify-center space-x-1.5 transition cursor-pointer ${
+                    isDarkMode 
+                      ? "bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-300" 
+                      : "bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs"
+                  }`}
                 >
                   <Bot size={13} />
                   <span>Lancer le Simulateur 2D en Direct</span>
@@ -159,7 +175,11 @@ const SkillsSection = ({ onOpenRos, onOpenTinyMl }) => {
               )}
             </div>
 
-            <div className="p-3 rounded-xl hover:bg-emerald-900/20 transition-all border border-transparent hover:border-emerald-800/50">
+            <div className={`p-3 rounded-xl transition-all border ${
+              isDarkMode 
+                ? "border-transparent hover:border-emerald-800/50 hover:bg-emerald-900/20" 
+                : "border-transparent hover:border-teal-300 hover:bg-white/60"
+            }`}>
               <div 
                 onClick={() => {
                   const tinyItem = TECH_COLUMNS[1].items.find(i => i.name.includes("Embedded"));
@@ -167,7 +187,7 @@ const SkillsSection = ({ onOpenRos, onOpenTinyMl }) => {
                 }}
                 className="flex items-center space-x-4 cursor-pointer mb-2.5"
               >
-                <div className="text-teal-400 shrink-0">
+                <div className={`${isDarkMode ? "text-teal-400" : "text-teal-700"} shrink-0`}>
                   <Cpu size={32} />
                 </div>
                 <div>
@@ -178,7 +198,11 @@ const SkillsSection = ({ onOpenRos, onOpenTinyMl }) => {
               {onOpenTinyMl && (
                 <button
                   onClick={onOpenTinyMl}
-                  className="w-full py-1.5 px-3 rounded-lg bg-teal-500/20 hover:bg-teal-500/30 border border-teal-500/40 text-teal-300 font-mono text-[11px] font-semibold flex items-center justify-center space-x-1.5 transition cursor-pointer"
+                  className={`w-full py-1.5 px-3 rounded-lg font-mono text-[11px] font-semibold flex items-center justify-center space-x-1.5 transition cursor-pointer ${
+                    isDarkMode 
+                      ? "bg-teal-500/20 hover:bg-teal-500/30 border border-teal-500/40 text-teal-300" 
+                      : "bg-teal-700 hover:bg-teal-800 text-white shadow-xs"
+                  }`}
                 >
                   <Cpu size={13} />
                   <span>Tester le Playground TinyML (INT8)</span>
@@ -191,10 +215,14 @@ const SkillsSection = ({ onOpenRos, onOpenTinyMl }) => {
                 const dataItem = TECH_COLUMNS[1].items.find(i => i.name.includes("Data"));
                 if (dataItem) setModalTech(dataItem);
               }}
-              className="p-3 rounded-xl hover:bg-emerald-900/20 transition-all border border-transparent hover:border-emerald-800/50 cursor-pointer"
+              className={`p-3 rounded-xl transition-all border cursor-pointer ${
+                isDarkMode 
+                  ? "border-transparent hover:border-emerald-800/50 hover:bg-emerald-900/20" 
+                  : "border-transparent hover:border-cyan-300 hover:bg-white/60"
+              }`}
             >
               <div className="flex items-center space-x-4">
-                <div className="text-cyan-400 shrink-0">
+                <div className={`${isDarkMode ? "text-cyan-400" : "text-cyan-700"} shrink-0`}>
                   <Eye size={32} />
                 </div>
                 <div>
