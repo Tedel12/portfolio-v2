@@ -359,32 +359,33 @@ const MascotGuide = ({
                 // Start female French speech
                 if (isVoiceEnabled && !isMuted) {
                     setIsTalking(true);
-                    const speechText = `${step.question} ... ${step.answer}`;
+                    const speechText = `${step.question}. ${step.answer}`;
                     
                     speakFrench(speechText, {
                         onStart: () => setIsTalking(true),
                         onEnd: () => {
                             setIsTalking(false);
-                            // Reading finished: wait comfortable 1.4s then advance automatically
+                            // Reading finished completely: wait pleasant 2 seconds then advance
                             if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
                             autoAdvanceTimerRef.current = setTimeout(() => {
                                 handleAutoNext(stepIdx, stepsList);
-                            }, 1400);
+                            }, 2000);
                         },
                         onError: () => {
                             setIsTalking(false);
+                            // Do not rush next section on error; give user ample time to read
                             if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
                             autoAdvanceTimerRef.current = setTimeout(() => {
                                 handleAutoNext(stepIdx, stepsList);
-                            }, 3500);
+                            }, 10000);
                         }
                     });
                 } else {
-                    // Voice disabled: wait reading time based on text length (~7s)
+                    // Voice disabled: wait generous reading time based on text (~9s)
                     if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
                     autoAdvanceTimerRef.current = setTimeout(() => {
                         handleAutoNext(stepIdx, stepsList);
-                    }, 7000);
+                    }, 9500);
                 }
             }, 800);
         }
