@@ -9,7 +9,7 @@ import CertificateDetailModal from './CertificateDetailModal';
 // Animated Finger Tap / Pointer Icon
 const AnimatedTapPointer = () => (
     <div className="relative flex flex-col items-center pointer-events-none select-none">
-        {/* Concentric pulsing rings */}
+        {/* Concentric pulsing rings on the finger target only */}
         <div className="relative flex items-center justify-center">
             <span className="absolute w-12 h-12 rounded-full bg-emerald-400/40 animate-ping" />
             <span className="absolute w-8 h-8 rounded-full bg-emerald-400/60 animate-pulse" />
@@ -44,36 +44,31 @@ const AnimatedTapPointer = () => (
             </motion.div>
         </div>
 
-        {/* Action badge text */}
-        <motion.div
-            animate={{ opacity: [0.85, 1, 0.85] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="mt-2.5 px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-slate-950/85 backdrop-blur-md text-emerald-300 border border-emerald-400/40 shadow-xl flex items-center space-x-1.5"
-        >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+        {/* Action badge text - Static without pulse as requested */}
+        <div className="mt-2.5 px-3 py-1 rounded-full text-[11px] font-mono font-semibold uppercase tracking-wider bg-slate-950/90 backdrop-blur-md text-emerald-300 border border-emerald-400/30 shadow-lg">
             <span>Appuyez pour briser la vitre</span>
-        </motion.div>
+        </div>
     </div>
 );
 
 // Dynamic Glass Shards Particles Explosion on Break
-const GlassShardsExplosion = ({ originX = 50, originY = 50 }) => {
-    // 20 unique polygon shards with random physics
-    const shards = Array.from({ length: 20 }, (_, i) => {
-        const angle = (i / 20) * (2 * Math.PI) + (Math.random() * 0.4 - 0.2);
-        const distance = 120 + Math.random() * 220;
+const GlassShardsExplosion = ({ originX = 150, originY = 100 }) => {
+    // 24 unique polygon shards with realistic physics
+    const shards = Array.from({ length: 24 }, (_, i) => {
+        const angle = (i / 24) * (2 * Math.PI) + (Math.random() * 0.3 - 0.15);
+        const distance = 140 + Math.random() * 260;
         const targetX = Math.cos(angle) * distance;
         const targetY = Math.sin(angle) * distance;
-        const rotateZ = (Math.random() - 0.5) * 720;
-        const rotateX = (Math.random() - 0.5) * 360;
-        const rotateY = (Math.random() - 0.5) * 360;
-        const size = 20 + Math.random() * 45;
+        const rotateZ = (Math.random() - 0.5) * 800;
+        const rotateX = (Math.random() - 0.5) * 450;
+        const rotateY = (Math.random() - 0.5) * 450;
+        const size = 18 + Math.random() * 45;
 
-        // Random triangle or trapezoid polygon
-        const p1 = `${Math.random() * 40}% ${Math.random() * 30}%`;
-        const p2 = `${70 + Math.random() * 30}% ${Math.random() * 40}%`;
-        const p3 = `${50 + Math.random() * 50}% ${70 + Math.random() * 30}%`;
-        const p4 = `${Math.random() * 30}% ${70 + Math.random() * 30}%`;
+        // Random sharp shards polygon
+        const p1 = `${Math.random() * 35}% ${Math.random() * 30}%`;
+        const p2 = `${65 + Math.random() * 35}% ${Math.random() * 40}%`;
+        const p3 = `${45 + Math.random() * 55}% ${65 + Math.random() * 35}%`;
+        const p4 = `${Math.random() * 35}% ${65 + Math.random() * 35}%`;
         const clipPath = `polygon(${p1}, ${p2}, ${p3}, ${p4})`;
 
         return {
@@ -89,16 +84,37 @@ const GlassShardsExplosion = ({ originX = 50, originY = 50 }) => {
     });
 
     return (
-        <div className="absolute inset-0 pointer-events-none z-30 overflow-hidden" style={{ perspective: 1000 }}>
-            {/* Crack lightning flash */}
+        <div className="absolute inset-0 pointer-events-none z-30 overflow-hidden" style={{ perspective: 1200 }}>
+            {/* Instant crack lightning flash */}
             <motion.div
-                initial={{ opacity: 1, scale: 0.95 }}
+                initial={{ opacity: 0.9, scale: 0.98 }}
                 animate={{ opacity: 0, scale: 1.15 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                className="absolute inset-0 bg-white/40 backdrop-blur-xs"
+                transition={{ duration: 0.45, ease: "easeOut" }}
+                className="absolute inset-0 bg-white/50 backdrop-blur-xs"
             />
 
-            {/* Exploding Shards */}
+            {/* Spiderweb crack lines radiating from click */}
+            <motion.svg
+                initial={{ opacity: 1, scale: 0.8 }}
+                animate={{ opacity: [1, 0.85, 0], scale: 1.15 }}
+                transition={{ duration: 1.1, ease: "easeOut" }}
+                className="absolute inset-0 w-full h-full stroke-white/80"
+                style={{ filter: "drop-shadow(0 0 6px rgba(255,255,255,0.8))" }}
+            >
+                <circle cx={originX} cy={originY} r="18" fill="none" strokeWidth="2.5" />
+                <circle cx={originX} cy={originY} r="38" fill="none" strokeWidth="1.8" strokeDasharray="6 4" />
+                <circle cx={originX} cy={originY} r="65" fill="none" strokeWidth="1.2" strokeDasharray="4 6" />
+                <line x1={originX} y1={originY} x2={originX - 160} y2={originY - 120} strokeWidth="2" />
+                <line x1={originX} y1={originY} x2={originX + 170} y2={originY - 110} strokeWidth="2" />
+                <line x1={originX} y1={originY} x2={originX - 180} y2={originY + 130} strokeWidth="2" />
+                <line x1={originX} y1={originY} x2={originX + 190} y2={originY + 125} strokeWidth="2" />
+                <line x1={originX} y1={originY} x2={originX - 190} y2={originY + 10} strokeWidth="1.6" />
+                <line x1={originX} y1={originY} x2={originX + 200} y2={originY - 20} strokeWidth="1.6" />
+                <line x1={originX} y1={originY} x2={originX + 15} y2={originY - 150} strokeWidth="1.6" />
+                <line x1={originX} y1={originY} x2={originX - 25} y2={originY + 160} strokeWidth="1.6" />
+            </motion.svg>
+
+            {/* Cinematic Slower Exploding Shards (1.25s duration) */}
             {shards.map((s) => (
                 <motion.div
                     key={s.id}
@@ -109,30 +125,30 @@ const GlassShardsExplosion = ({ originX = 50, originY = 50 }) => {
                         rotateX: 0,
                         rotateY: 0,
                         rotateZ: 0,
-                        opacity: 0.95,
+                        opacity: 1,
                     }}
                     animate={{
                         x: originX + s.targetX,
-                        y: originY + s.targetY + 40, // gravity effect
-                        scale: [1, 1.2, 0.4],
+                        y: originY + s.targetY + 55, // subtle gravity
+                        scale: [1, 1.25, 0.55],
                         rotateX: s.rotateX,
                         rotateY: s.rotateY,
                         rotateZ: s.rotateZ,
-                        opacity: [0.95, 0.8, 0],
+                        opacity: [1, 0.95, 0.7, 0],
                     }}
                     transition={{
-                        duration: 0.55,
-                        ease: [0.22, 1, 0.36, 1],
+                        duration: 1.25,
+                        ease: [0.16, 1, 0.3, 1],
                     }}
                     style={{
                         position: "absolute",
                         width: `${s.size}px`,
                         height: `${s.size}px`,
                         clipPath: s.clipPath,
-                        backgroundColor: "rgba(255, 255, 255, 0.55)",
-                        backdropFilter: "blur(4px)",
-                        border: "1px solid rgba(255, 255, 255, 0.8)",
-                        boxShadow: "0 8px 24px rgba(16, 185, 129, 0.3)",
+                        backgroundColor: "rgba(255, 255, 255, 0.65)",
+                        backdropFilter: "blur(5px)",
+                        border: "1.5px solid rgba(255, 255, 255, 0.9)",
+                        boxShadow: "0 8px 30px rgba(16, 185, 129, 0.4)",
                     }}
                 />
             ))}
@@ -175,11 +191,11 @@ const CertificatesSection = () => {
         // 2. Trigger shatter animation
         setShatteringId(cert.id);
 
-        // 3. Open full HD certificate modal after shatter finishes
+        // 3. Open full HD certificate modal after letting the user fully enjoy the shatter animation (1.25s)
         setTimeout(() => {
             setSelectedCert(cert);
             setShatteringId(null);
-        }, 440);
+        }, 1250);
     };
 
     return (
@@ -297,7 +313,7 @@ const CertificatesSection = () => {
                                                     : { rotateY: 0, scale: 1 }
                                             }
                                             transition={{
-                                                duration: 0.45,
+                                                duration: 0.95,
                                                 ease: "easeInOut",
                                             }}
                                             className="w-full h-full relative"
