@@ -300,6 +300,16 @@ const MascotGuide = ({
     const [isWidgetMenuOpen, setIsWidgetMenuOpen] = useState(false);
     const [mascotCoords, setMascotCoords] = useState({ top: 120, left: 40 });
 
+    // Synchronization refs to avoid stale closures in speech callbacks
+    const isPlayingRef = useRef(false);
+    isPlayingRef.current = isPlaying;
+    const isActiveRef = useRef(false);
+    isActiveRef.current = isActive;
+    const tourModeRef = useRef(tourMode);
+    tourModeRef.current = tourMode;
+    const isMutedRef = useRef(isMuted);
+    isMutedRef.current = isMuted;
+
     // 60s countdown timer state
     const [pitchSecondsLeft, setPitchSecondsLeft] = useState(60);
 
@@ -321,6 +331,20 @@ const MascotGuide = ({
         el.classList.add('mascot-focused-section');
     }, [removeSpotlight]);
 
+    // Forward declaration of stopTour so auto-advance can call it cleanly
+    const stopTour = useCallback(() => {
+        setIsActive(false);
+        isActiveRef.current = false;
+        setIsPlaying(false);
+        isPlayingRef.current = false;
+        setIsWalking(false);
+        setIsTalking(false);
+        stopSpeaking();
+        if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
+        playRobotSound("pop", isMutedRef.current);
+        removeSpotlight();
+    }, [removeSpotlight]);
+
     // Position and walk mascot to target section (under navbar without being hidden)
     const navigateMascotToSection = useCallback((stepIdx, stepsList = activeSteps) => {
         const step = stepsList[stepIdx];
@@ -329,7 +353,7 @@ const MascotGuide = ({
         const targetEl = document.getElementById(step.targetId);
         if (targetEl) {
             setIsWalking(true);
-            playRobotSound("chirp", isMuted);
+            playRobotSound("chirp", isMutedRef.current);
 
             // Compute target position and scroll with safe offset for 80px fixed navbar
             const rect = targetEl.getBoundingClientRect();
@@ -357,7 +381,7 @@ const MascotGuide = ({
                 setIsWalking(false);
 
                 // Start female French speech
-                if (isVoiceEnabled && !isMuted) {
+                if (isVoiceEnabled && !isMutedRef.current) {
                     setIsTalking(true);
                     const speechText = `${step.question}. ${step.answer}`;
                     
@@ -365,59 +389,54 @@ const MascotGuide = ({
                         onStart: () => setIsTalking(true),
                         onEnd: () => {
                             setIsTalking(false);
-                            // Reading finished completely: wait pleasant 2 seconds then advance
+                            // As soon as reading finishes: advance immediately without user needing to click Next!
                             if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
+                            const transitionDelay = tourModeRef.current === "pitch60s" ? 300 : 700;
                             autoAdvanceTimerRef.current = setTimeout(() => {
-                                handleAutoNext(stepIdx, stepsList);
-                            }, 2000);
+                                if (stepIdx < stepsList.length - 1) {
+                                    const nextIdx = stepIdx + 1;
+                                    setCurrentStepIndex(nextIdx);
+                                    navigateMascotToSection(nextIdx, stepsList);
+                                } else {
+                                    stopTour();
+                                    playRobotSound("happy", isMutedRef.current);
+                                }
+                            }, transitionDelay);
                         },
                         onError: () => {
                             setIsTalking(false);
-                            // Do not rush next section on error; give user ample time to read
+                            // On error or skip, advance after a short reading buffer
                             if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
                             autoAdvanceTimerRef.current = setTimeout(() => {
-                                handleAutoNext(stepIdx, stepsList);
-                            }, 10000);
+                                if (stepIdx < stepsList.length - 1) {
+                                    const nextIdx = stepIdx + 1;
+                                    setCurrentStepIndex(nextIdx);
+                                    navigateMascotToSection(nextIdx, stepsList);
+                                } else {
+                                    stopTour();
+                                }
+                            }, 4000);
                         }
                     });
                 } else {
-                    // Voice disabled: wait generous reading time based on text (~9s)
+                    // Voice disabled: wait reading buffer then advance automatically
                     if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
                     autoAdvanceTimerRef.current = setTimeout(() => {
-                        handleAutoNext(stepIdx, stepsList);
-                    }, 9500);
+                        if (stepIdx < stepsList.length - 1) {
+                            const nextIdx = stepIdx + 1;
+                            setCurrentStepIndex(nextIdx);
+                            navigateMascotToSection(nextIdx, stepsList);
+                        } else {
+                            stopTour();
+                            playRobotSound("happy", isMutedRef.current);
+                        }
+                    }, 6500);
                 }
             }, 800);
         }
-    }, [activeSteps, applySpotlight, isMuted, isVoiceEnabled]);
+    }, [activeSteps, applySpotlight, isVoiceEnabled, stopTour]);
 
-    // Advance automatically only when speech is fully completed
-    const handleAutoNext = useCallback((stepIdx, stepsList) => {
-        if (!isPlaying) return;
-        if (stepIdx < stepsList.length - 1) {
-            const nextIdx = stepIdx + 1;
-            setCurrentStepIndex(nextIdx);
-            navigateMascotToSection(nextIdx, stepsList);
-        } else {
-            // Tour completed
-            stopTour();
-            playRobotSound("happy", isMuted);
-        }
-    }, [isPlaying, isMuted, navigateMascotToSection]);
-
-    // Stop complete tour
-    const stopTour = useCallback(() => {
-        setIsActive(false);
-        setIsPlaying(false);
-        setIsWalking(false);
-        setIsTalking(false);
-        stopSpeaking();
-        if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
-        playRobotSound("pop", isMuted);
-        removeSpotlight();
-    }, [isMuted, removeSpotlight]);
-
-    // Next tour step
+    // Next tour step (manual override)
     const nextStep = useCallback(() => {
         stopSpeaking();
         if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
@@ -428,9 +447,9 @@ const MascotGuide = ({
             navigateMascotToSection(nextIdx);
         } else {
             stopTour();
-            playRobotSound("happy", isMuted);
+            playRobotSound("happy", isMutedRef.current);
         }
-    }, [activeSteps.length, currentStepIndex, isMuted, navigateMascotToSection, stopTour]);
+    }, [activeSteps.length, currentStepIndex, navigateMascotToSection, stopTour]);
 
     // Previous tour step
     const prevStep = useCallback(() => {
