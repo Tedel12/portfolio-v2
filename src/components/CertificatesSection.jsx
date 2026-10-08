@@ -9,10 +9,8 @@ import CertificateDetailModal from './CertificateDetailModal';
 // Animated Finger Tap / Pointer Icon
 const AnimatedTapPointer = () => (
     <div className="relative flex flex-col items-center pointer-events-none select-none">
-        {/* Concentric pulsing rings on the finger target only */}
+        {/* Sleek Touch / Tap Indicator SVG */}
         <div className="relative flex items-center justify-center">
-            <span className="absolute w-12 h-12 rounded-full bg-emerald-400/40 animate-ping" />
-            <span className="absolute w-8 h-8 rounded-full bg-emerald-400/60 animate-pulse" />
             
             {/* Sleek Touch / Tap Indicator SVG */}
             <motion.div

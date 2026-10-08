@@ -405,7 +405,7 @@ const RosSimulatorModal = ({ isOpen, onClose }) => {
                   Simulateur ROS2 & Physical AI Sandbox
                 </h3>
                 <span className="text-[10px] sm:text-xs font-mono text-emerald-400 flex items-center space-x-1.5 truncate">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
                   <span className="truncate">Nœud Actif : `/turtlebot_core_node` (ROS2 Humble)</span>
                 </span>
               </div>
@@ -437,7 +437,7 @@ const RosSimulatorModal = ({ isOpen, onClose }) => {
                 </div>
 
                 <div className="absolute top-2.5 right-2.5 px-2.5 py-1 rounded bg-black/70 backdrop-blur border border-emerald-500/30 text-[10px] font-mono text-slate-200">
-                  {isAutonomous ? "🤖 Navigation Nav2 Active" : "🎮 Téléopération Manuelle"}
+                  {isAutonomous ? "Navigation Nav2 Active" : "Téléopération Manuelle"}
                 </div>
               </div>
 

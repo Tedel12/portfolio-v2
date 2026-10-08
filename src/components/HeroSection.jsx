@@ -45,7 +45,7 @@ const HeroSection = () => {
                                     ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" 
                                     : "bg-emerald-50 border-emerald-200 text-emerald-800 shadow-xs"
                             }`}>
-                                <span className={`w-2 h-2 rounded-full shrink-0 animate-pulse ${isDarkMode ? "bg-emerald-400" : "bg-emerald-600"}`} />
+
                                 <span className="truncate">Disponible pour Projets & R&D (Freelance / CDI)</span>
                             </span>
                         </motion.div>
@@ -57,7 +57,7 @@ const HeroSection = () => {
                                 isDarkMode ? "text-white" : "text-slate-900"
                             }`}
                         >
-                            Ben Ephraïm Agbannon
+                            Ben Ephraïm AGBANNON
                             <br />
                             <span className={`font-semibold text-lg sm:text-2xl md:text-3xl lg:text-4xl block mt-1.5 sm:mt-2 ${
                                 isDarkMode ? "text-emerald-400" : "text-emerald-600"

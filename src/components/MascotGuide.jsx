@@ -624,8 +624,8 @@ const MascotGuide = ({
                         exit={{ opacity: 0, y: -20 }}
                         className="fixed top-20 left-1/2 transform -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl border border-emerald-500/50 bg-[#031d12]/95 backdrop-blur-md text-slate-100 shadow-xl flex items-center space-x-3 text-xs font-mono"
                     >
-                        <Volume2 size={16} className="text-emerald-400 shrink-0 animate-pulse" />
-                        <span>🔊 Astuce : Vérifiez que le volume de vos haut-parleurs est allumé.</span>
+                        <Volume2 size={16} className="text-emerald-400 shrink-0" />
+                        <span>Astuce : Vérifiez que le volume de vos haut-parleurs est allumé.</span>
                         <button
                             onClick={() => playRobotSound("happy", false)}
                             className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 border border-emerald-500/40 text-[10px]"
@@ -671,9 +671,9 @@ const MascotGuide = ({
                                 <motion.div 
                                     initial={{ opacity: 0, y: 5 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-mono font-bold animate-pulse mt-3"
+                                    className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-mono font-bold mt-3"
                                 >
-                                    <span>🐾 En route vers {currentStep.highlightTitle}...</span>
+                                    <span>En route vers {currentStep.highlightTitle}...</span>
                                 </motion.div>
                             )}
 
@@ -691,7 +691,7 @@ const MascotGuide = ({
                             {/* Control Bar */}
                             <div className="flex items-center justify-between pb-3 mb-3 border-b border-emerald-900/60">
                                 <div className="flex items-center space-x-2">
-                                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
                                     <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-400">
                                         {tourMode === "pitch60s" ? "PITCH EXPRESS 60S" : "GUIDE VIRTUEL"} • ÉTAPE {currentStepIndex + 1}/{activeSteps.length}
                                     </span>

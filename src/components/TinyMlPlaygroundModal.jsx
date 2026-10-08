@@ -179,7 +179,7 @@ const TinyMlPlaygroundModal = ({ isOpen, onClose }) => {
                   Playground d'Inférence TinyML en Temps Réel
                 </h3>
                 <span className="text-[10px] sm:text-xs font-mono text-emerald-400 flex items-center space-x-1.5 truncate">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
                   <span className="truncate">Modèle Quantifié INT8 • Inférence Edge Locale</span>
                 </span>
               </div>

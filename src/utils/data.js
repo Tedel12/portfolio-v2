@@ -528,7 +528,7 @@ export const PROJECTS = [
         liveUrl: "https://dentw.vercel.app/",
         githubUrl: "https://github.com/Tedel12/dentw",
         featured: true,
-        badgeText: "⭐ Projet Coup de Cœur",
+        badgeText: "Projet Coup de Cœur",
         category: "Full-Stack",
     },
     {
